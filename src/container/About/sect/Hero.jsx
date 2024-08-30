@@ -2,13 +2,14 @@ import { useState } from 'react'
 
 import { FaGithub, FaYoutube, FaStackOverflow } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
-import badge from '../../../assets/badge.svg'
+import badge from '../../../assets/coat/badge.svg'
 import lalo from '../../../assets/lalo.jpg'
 
 import {
     Socials,
     SocialLink,
     Photo,
+    ProfileImage,
     Badge,
     ActivityStatus,
     Title,
@@ -41,19 +42,21 @@ const SocialIcons = ({ username }) => (
 )
 
 const Profile = ({ isActive }) => {
-  const [loadCompleted, setLoadCompleted] = useState(false)
+  const [loadCompleted, setLoadCompleted] = useState(false);
 
   return (
-    <Photo
-      src={lalo}
-      onLoad={() => setLoadCompleted(true)}
-      style={{ opacity: loadCompleted ? 1 : 0, transition: 'opacity 0.5s ease-in-out' }}
-    >
+    <Photo>
+      <ProfileImage
+        src={lalo}
+        alt="Lalo Blanc"
+        onLoad={() => setLoadCompleted(true)}
+        loadCompleted={loadCompleted}
+      />
       <Badge src={badge} alt="Engilore Coat of Arms" />
       <ActivityStatus isActive={isActive} />
     </Photo>
-  );
-};
+  )
+}
 
 const InfoSection = ({ title, description, listItems }) => (
   <div>

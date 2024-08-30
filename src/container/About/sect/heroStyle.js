@@ -20,7 +20,7 @@ export const Section = styled.section`
   justify-content: center;
   align-items: flex-start;
   padding: 40px 20px;
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-accent);
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -54,31 +54,40 @@ export const Photo = styled.div`
   height: 150px;
   margin-bottom: 20px;
   border-radius: 50%;
-  background-image: url(${props => props.src});
-  background-size: cover;
-  background-position: center;
-  opacity: ${props => props.loadCompleted ? 1 : 0};
+`
+
+export const ProfileImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: ${props => (props.loadCompleted ? 1 : 0)};
   animation: ${fadeIn} 1.5s ease-out forwards;
+  transition: opacity 0.5s ease-in-out;
+  border-radius: 50%;
+  z-index: 1;
 `
 
 export const ActivityStatus = styled.div`
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 15px;
-  height: 15px;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background-color: ${props => props.isActive ? '#5FDD9D' : 'grey'};
-  animation: ${props => props.isActive ? css`${blink} 2s linear infinite` : 'none'};
-`;
+  background-color: ${props => (props.isActive ? '#5FDD9D' : 'grey')};
+  z-index: 3;
+  border: 2px solid white;
+  animation: ${props => (props.isActive ? css`${blink} 2s linear infinite` : 'none')};
+`
 
 export const Badge = styled.img`
   position: absolute;
-  bottom: 5px;
-  right: 5px;
+  bottom: -5px;
+  right: -5px;
   width: 50px;
   height: 50px;
   transition: 0.3s ease;
+  z-index: 3;
 `
 
 export const Name = styled.h1`

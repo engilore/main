@@ -1,13 +1,5 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
 
 export const Section = styled.section`
   display: flex;
@@ -22,7 +14,7 @@ export const Section = styled.section`
     align-items: center;
     justify-content: flex-start;
     padding: 20px 10px;
-    min-height: auto; /* Allows height to grow with content on mobile */
+    min-height: auto;
   }
 `
 
@@ -49,7 +41,7 @@ export const Content = styled.div`
 
   @media (max-width: 768px) {
     padding: 10px;
-    align-items: center; /* Centers content on mobile */
+    align-items: center;
   }
 `
 
@@ -134,8 +126,8 @@ export const ImageContainer = styled.div`
 export const Image = styled.img`
   width: 100%;
   height: auto;
-  opacity: ${props => props.loadCompleted ? 1 : 0};
-  animation: ${fadeIn} 1.5s ease-out forwards;
+  opacity: ${props => (props.loadCompleted ? 1 : 0)};
+  transition: opacity 1.5s ease-out;
   border-radius: 10px;
   object-fit: cover;
 `

@@ -15,7 +15,7 @@ import {
     Tag
 } from './featuredPostStyle'
 
-import badge from '../../../assets/badge.svg'
+import badge from '../../../assets/coat/badge.svg'
 
 const featuredPosts = [
   {
