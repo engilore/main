@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+
+:root {
+    /* Color Palette */
+    --clr-primary: #212529;
+    --clr-secondary: #6C757D;
+    --clr-accent: #edf0da;
+    --clr-black: black;
+    --clr-grey: grey;
+    --clr-white: white;
+
+    /* Background Color Palette */
+    --bg-primary: #5ca4a9;
+    --bg-secondary: #4f000b;
+    --bg-accent: #edf0da;
+    --bg-light: #E6E8E6;
+    --bg-white: white;
+    --bg-black: black;
+
+    /* Fonts */
+    --fnt-primary: 'DM Sans', sans-serif;
+    --fnt-secondary: 'EB Garamond', serif;
+
+    /* Font Sizes */
+    --fs-base: 16px;
+    --fs-xs: 10px;
+    --fs-sm: 14px;
+    --fs-lg: 18px;
+    --fs-xl: 24px;
+    --fs-xxl: 30px;
+    --fs-2xl: 34px;
+    --fs-3xl: 40px;
+
+    /* Font Weights */
+    --fw-light: 300;
+    --fw-normal: 400;
+    --fw-medium: 550;
+    --fw-bold: 700;
+    --fw-extrabold: 800;
+
+    /* Border Radius */
+    --radius-sm: 2px;
+    --radius-md: 4px;
+    --radius-lg: 8px;
+    --radius-pill: 50px;
+    --radius-circle: 50%;
+
+    /* Shadow */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.23);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+    /* Opacity */
+    --opacity-none: 1;
+    --opacity-light: 0.5;
+    --opacity-medium: 0.75;
+    --opacity-strong: 0.9;
+}
