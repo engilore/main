@@ -23,7 +23,7 @@ const postData = {
   tags: ["Philosophy", "Education", "Science"]
 }
 
-const recentPost = () => {
+const RecentPost = () => {
   return (
     <Section>
       <Header>Most Recent Post :</Header>
@@ -52,4 +52,4 @@ const recentPost = () => {
   )
 }
 
-export default recentPost
+export default RecentPost
