@@ -1,6 +1,7 @@
 import {
   HeroSection,
-  RecentPostSection
+  RecentPostSection,
+  FeaturedPostsSection
 } from './sect/index'
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
     <>
     <HeroSection />
     <RecentPostSection />
+    <FeaturedPostsSection />
     </>
   )
 }

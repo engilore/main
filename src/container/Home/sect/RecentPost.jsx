@@ -19,7 +19,7 @@ const postData = {
   title: "Lorem Ipsum Dolor Sit",
   types: ["Analysis", "Memoir", "Research"],
   date: "August 29, 2024",
-  content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  intro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   tags: ["Philosophy", "Education", "Science"]
 }
 
@@ -40,7 +40,7 @@ const RecentPost = () => {
               {postData.date}
             </PostDate>
           </PostMeta>
-          <Intro>{postData.content}</Intro>
+          <Intro>{postData.intro}</Intro>
           <TagPills>
             {postData.tags.map(tag => (
               <Tag key={tag}>{tag}</Tag>
