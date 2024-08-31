@@ -16,11 +16,11 @@ const fadeIn = keyframes`
 `
 
 export const Section = styled.section`
+  background-color: var(--bg-accent);
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 40px 20px;
-  background-color: var(--bg-accent);
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -30,17 +30,17 @@ export const Section = styled.section`
 
 export const ProfileCard = styled.div`
   font-family: var(--fnt-primary);
+  background-color: var(--bg-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  text-align: center;
   flex: 0.35;
   max-width: 300px;
-  background: var(--bg-white);
-  border-radius: 15px;
-  box-shadow: var(--shadow-md);
-  padding: 30px;
-  text-align: center;
   margin-right: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 30px;
 
   @media (max-width: 768px) {
     margin-right: 0;
@@ -93,9 +93,9 @@ export const Badge = styled.img`
 export const Name = styled.h1`
   color: var(--clr-primary);
   font-family: var(--fnt-primary);
+  font-weight: var(--fw-bold);
   font-size: var(--fs-xxl);
   margin-bottom: 10px;
-  font-weight: var(--fw-bold);
 `
 
 export const Pronunciation = styled.p`
@@ -138,13 +138,13 @@ export const List = styled.ul`
 `
 
 export const ListItem = styled.li`
-  margin-bottom: 8px;
-  font-size: var(--fs-sm);
   color: var(--clr-primary);
+  font-size: var(--fs-md);
+  margin-bottom: 8px;
 
   &:before {
-    content: "• ";
     color: var(--clr-primary);
+    content: "• ";
   }
 `
 
@@ -152,7 +152,7 @@ export const ListItem = styled.li`
 export const Title = styled.h2`
   color: var(--clr-primary);
   font-family: var(--fnt-secondary);
-  font-size: var(--fs-xl);
+  font-size: var(--fs-2xl);
   font-weight: var(--fw-bold);
   margin-bottom: 5px;
 `

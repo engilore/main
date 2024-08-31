@@ -33,11 +33,11 @@ export const Section = styled.section`
 `
 
 export const Header = styled.header`
-  width: 100%;
-  padding: 40px 20px;  /* Increased padding for more space */
   background-color: var(--bg-accent);
+  width: 100%;
   text-align: center;
   z-index: 3;
+  padding: 40px 20px;
 
   @media (max-width: 768px) {
     padding: 30px 15px;
@@ -70,8 +70,8 @@ export const Subtitle = styled.h2`
   font-weight: var(--fw-bold);
   font-size: var(--fs-lg);
   margin: 10px auto 0;
-  max-width: 800px;  /* Constrains the subtitle width */
-  padding: 0 20px;  /* Adds some padding to the sides for a squeezed look */
+  max-width: 1200px;
+  padding: 0 20px;
 
   @media (max-width: 768px) {
     font-size: 1.25rem;

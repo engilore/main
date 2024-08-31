@@ -13,10 +13,12 @@ const wobbleAnimation = keyframes`
 `
 
 export const Nav = styled.nav`
-    background-color: var(--bg-white);
     color: var(--clr-primary);
+    background-color: var(--bg-white);
     height: 60px;
-    box-shadow: var(--shadow-sm);
+    border: 4px;
+    border-bottom: solid;
+    border-color: var(--bg-light);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,7 +68,7 @@ export const NavLinks = styled.div`
 export const NavLink = styled(Link)`
     color: var(--clr-secondary);
     font-family: var(--fnt-primary);
-    font-size: var(--fs-md);
+    font-size: var(--fs-base);
     font-weight: var(--fw-medium);
     text-decoration: none;
     border-radius: var(--radius-md);

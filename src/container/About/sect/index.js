@@ -1,4 +1,4 @@
-import HeroSection from './Hero'
-import CoatSection from './Coat'
+import HeroSection from './hero'
+import CoatSection from './coat'
 
 export { HeroSection, CoatSection }

@@ -25,6 +25,8 @@ export const Contain = styled.div`
   max-width: 1200px;
   width: 100%;
   flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 40px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -52,7 +54,7 @@ export const Header = styled.h2`
   margin-bottom: 1rem;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
   }
 `
 
