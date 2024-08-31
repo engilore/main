@@ -1,4 +1,4 @@
-import FeaturedPost from '../../Blog/components/FeaturedPost/index'
+import FeaturedPost from '../../Blog/constants/FeaturedPost/index'
 
 import {
     Section,
