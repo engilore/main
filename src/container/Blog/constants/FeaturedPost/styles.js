@@ -2,32 +2,6 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 
-export const Section = styled.section`
-  background-color: var(--bg-accent);
-  color: var(--clr-black);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-`
-
-export const Header = styled.h2`
-  color: var(--clr-primary);
-  font-family: var(--fnt-secondary);
-  font-size: var(--fs-2xl);
-  text-align: start;
-  text-decoration: underline;
-  width: 70%;
-  margin-top: 40px;
-  margin-bottom: 20px;
-
-  @media (max-width: 768px) {
-    text-align: center;
-    width: 100%;
-  }
-`
-
 export const Title = styled.h1`
   font-family: var(--fnt-secondary);
   font-size: var(--fs-2xl);
@@ -48,47 +22,19 @@ export const Post = styled(Link)`
   max-width: 1000px;
   padding: 30px;
   margin-bottom: 50px;
-
-  border-radius: var(--radius-md);
-  border: 4px solid transparent;
+  border: 4px;
+  border-bottom: solid;
+  border-color: var(--bg-light);
 
   &:hover {
-    border-color: var(--clr-primary);
-    box-shadow: var(--shadow-sm);
-
     ${Title} {
-      text-decoration: underline;
+        text-decoration: underline;
     }
   }
 
   @media (max-width: 768px) {
     padding: 10px;
     margin: 20px;
-  }
-`
-
-export const Contain = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-`
-
-export const Intro = styled.p`
-  color: var(--clr-primary);
-  font-family: var(--fnt-secondary);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-normal);
-  opacity: var(--opacity-strong);
-  border-radius: var(--radius-md);
-  padding: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  box-shadow: var(--shadow-sm);
-
-  @media (max-width: 768px) {
-    padding: 10px;
-    font-size: var(--fs-md);
   }
 `
 
@@ -141,11 +87,12 @@ export const TagPills = styled.div`
 `
 
 export const Tag = styled.span`
-  background-color: var(--bg-primary);
-  color: var(--clr-white);
+  color: var(--clr-secondary);
   font-family: var(--fnt-primary);
   font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-medium);
   border-radius: var(--radius-pill);
+  border: 2px solid;
+  border-color: var(--clr-secondary);
   padding: 5px 10px;
 `

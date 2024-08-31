@@ -1,21 +1,21 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
-
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
 
 export const Section = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60vh;
-  padding: 0 20px;
+  min-height: 60vh;
+  padding: 20px;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 10px;
+    min-height: auto;
+  }
 `
 
 export const Contain = styled.div`
@@ -25,6 +25,8 @@ export const Contain = styled.div`
   max-width: 1200px;
   width: 100%;
   flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 40px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -41,6 +43,7 @@ export const Content = styled.div`
 
   @media (max-width: 768px) {
     padding: 10px;
+    align-items: center;
   }
 `
 
@@ -51,7 +54,7 @@ export const Header = styled.h2`
   margin-bottom: 1rem;
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
   }
 `
 
@@ -63,6 +66,50 @@ export const Description = styled.p`
 
   @media (max-width: 768px) {
     font-size: var(--fs-lg);
+  }
+`
+
+export const Subscribe = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+`
+
+export const EmailInput = styled.input`
+  font-family: var(--fnt-primary);
+  font-size: var(--fs-md);
+  border: 2px solid; 
+  border-color: var(--bg-primary);
+  outline: none;
+  border-radius: 5px 0 0 5px;
+  padding: 0.75rem;
+  flex: 1;
+
+  @media (max-width: 768px) {
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+`
+
+export const SubscribeBTN = styled.button`
+  color: var(--clr-white);
+  font-family: var(--fnt-primary);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-md);
+  background-color: var(--bg-primary);
+  border: 2px solid var(--bg-primary);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+
+  @media (max-width: 768px) {
+    border-radius: 5px;
   }
 `
 
@@ -81,8 +128,8 @@ export const ImageContainer = styled.div`
 export const Image = styled.img`
   width: 100%;
   height: auto;
-  opacity: ${props => props.loadCompleted ? 1 : 0};
-  animation: ${fadeIn} 1.5s ease-out forwards;
+  opacity: ${props => (props.loadCompleted ? 1 : 0)};
+  transition: opacity 1.5s ease-out;
   border-radius: 10px;
   object-fit: cover;
 `
