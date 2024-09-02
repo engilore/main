@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -55,6 +56,16 @@ export const Item = styled.div`
   @media (max-width: 768px) {
     padding: 15px;
     text-align: center;
+  }
+`
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  width: 100%;
+
+  & ${Item} {
+    display: flex;
+    align-items: center;
   }
 `
 
