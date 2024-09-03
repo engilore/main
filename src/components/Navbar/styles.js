@@ -22,6 +22,7 @@ export const Nav = styled.nav`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 `
 
 export const Contain = styled.div`
@@ -31,6 +32,21 @@ export const Contain = styled.div`
     padding: 0 50px;
     width: 100%;
     max-width: 1200px;
+
+    @media (max-width: 768px) {
+        padding: 0 20px;
+    }
+`
+
+export const RightSection = styled.div`
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    @media (max-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+    }
 `
 
 export const Brand = styled(Link)`
@@ -54,6 +70,10 @@ export const Name = styled.h1`
     font-family: var(--fnt-primary);
     font-size: var(--fs-xl);
     margin-left: 10px;
+
+    @media (max-width: 768px) {
+        font-size: var(--fs-lg);
+    }
 `
 
 export const NavLinks = styled.div`
@@ -74,6 +94,86 @@ export const NavLink = styled(Link)`
     border-radius: var(--radius-md);
     margin: 0 2px;
     padding: 8px 12px;
+
+    &:hover {
+        background-color: var(--bg-light);
+        color: var(--clr-primary);
+    }
+`
+
+export const LoginButton = styled(Link)`
+    background-color: var(--bg-primary);
+    color: var(--clr-white);
+    font-family: var(--fnt-primary);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-bold);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+    margin-left: 10px;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
+
+    &:hover {
+        opacity: var(--opacity-strong);
+    }
+`
+
+export const LoginHamButton = styled(Link)`
+    background-color: var(--bg-primary);
+    color: var(--clr-white);
+    font-family: var(--fnt-primary);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-bold);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+    margin-top: 10px;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+
+    &:hover {
+        opacity: var(--opacity-strong);
+    }
+`
+
+
+export const HamburgerMenu = styled.div`
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 20px;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+`
+
+export const MobileMenu = styled.div`
+    background-color: var(--bg-white);
+    border-top: 1px solid var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px;
+`
+
+export const MobileMenuLink = styled(Link)`
+    color: var(--clr-secondary);
+    font-family: var(--fnt-primary);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-medium);
+    text-decoration: none;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
 
     &:hover {
         background-color: var(--bg-light);

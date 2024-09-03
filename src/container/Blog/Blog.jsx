@@ -1,28 +1,17 @@
-import BlogSidebar from '../../components/BlogSidebar/index'
-import { 
-  SpotlightPostSection,
-  FeaturedPostsSection,
-} from './sect/index'
+import { Routes, Route } from 'react-router-dom'
 
 import {
-  Layout,
-  MainContent,
-  SidebarWrapper
-} from './styles'
+  blogPath
+} from './paths'
+import Base from './views/index'
 
 
 const Blog = () => {
   return (
     <>
-      <SpotlightPostSection />
-      <Layout>
-        <MainContent>
-          <FeaturedPostsSection />
-        </MainContent>
-        <SidebarWrapper>
-          <BlogSidebar />
-        </SidebarWrapper>
-      </Layout>
+    <Routes>
+      <Route path={blogPath} element={<Base />} />
+    </Routes>
     </>
   )
 }
