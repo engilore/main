@@ -67,7 +67,7 @@ export const SubscribeForm = styled.div`
 
 export const Input = styled.input`
   font-family: var(--fnt-primary);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-medium);
   font-size: var(--fs-md);
   border: 2px solid var(--clr-grey);
   border-radius: var(--radius-pill) 0 0 var(--radius-pill);
@@ -87,7 +87,7 @@ export const Input = styled.input`
 export const Button = styled.button`
   color: var(--clr-white);
   font-family: var(--fnt-primary);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-bold);
   font-size: var(--fs-md);
   background-color: var(--bg-primary);
   border: 2px solid var(--bg-primary);
@@ -100,5 +100,9 @@ export const Button = styled.button`
     width: 100%;
     border-radius: var(--radius-pill);
     margin-top: 10px;
+  }
+
+  &:hover {
+        opacity: var(--opacity-strong);
   }
 `

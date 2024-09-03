@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { FaArrowRightLong } from "react-icons/fa6"
 
+import { 
+  Animation1
+} from '../../../../../../components/Canvas/index'
 import {
-  BackgroundAnimation,
   Section,
   Contain,
   ImageContainer,
@@ -30,7 +32,7 @@ const SpotlightPost = () => {
 
   return (
     <Section>
-      <BackgroundAnimation />
+      <Animation1 />
       <Contain hasImage={!!post.image}>
         {post.image && (
           <ImageContainer>

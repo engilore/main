@@ -1,4 +1,3 @@
-import Home from './views/Home/index'
-import About from './views/About/index'
+import Main from './Main'
 
-export { Home, About }
+export default Main

@@ -1,3 +1,3 @@
-import Base from './views/index'
+import Blog from './Blog'
 
-export default Base
+export default Blog

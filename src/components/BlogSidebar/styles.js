@@ -53,6 +53,16 @@ export const Item = styled.div`
     background-color: var(--bg-light);
   }
 
+  ${({ special }) => special && `
+    color: var(--clr-white);
+    background-color: var(--bg-primary);
+
+    &:hover {
+      background-color: var(--bg-primary);
+      opacity: var(--opacity-strong);
+    }
+  `}
+
   @media (max-width: 768px) {
     padding: 15px;
     text-align: center;
@@ -60,6 +70,7 @@ export const Item = styled.div`
 `
 
 export const StyledLink = styled(Link)`
+  color: var(--clr-primary);
   text-decoration: none;
   width: 100%;
 

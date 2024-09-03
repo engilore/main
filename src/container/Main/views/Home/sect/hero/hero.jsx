@@ -28,8 +28,8 @@ const Hero = () => {
             challenging the staid and stirring the stagnant. 
           </Description>
           <MembershipContainer>
-            <MemberBTN to="/membership">
-              Become a Member
+            <MemberBTN to="/auxiliership ">
+              Become a Auxiliary
               <FaFireFlameSimple  />
             </MemberBTN>
           </MembershipContainer>

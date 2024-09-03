@@ -87,7 +87,7 @@ export const MemberBTN = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; // Adds space between text and icon
+  gap: 10px;
   font-family: var(--fnt-primary);
   font-weight: var(--fw-bold);
   font-size: var(--fs-md);
@@ -97,7 +97,11 @@ export const MemberBTN = styled(Link)`
   cursor: pointer;
   padding: 0.75rem 1rem;
   text-decoration: none;
-`;
+
+  &:hover {
+        opacity: var(--opacity-strong);
+    }
+`
 
 
 export const ImageContainer = styled.div`

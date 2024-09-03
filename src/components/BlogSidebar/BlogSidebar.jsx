@@ -1,5 +1,6 @@
 import { FaScroll, FaForumbee, FaVideo, FaHandsHelping } from 'react-icons/fa'
-import { MdNaturePeople, MdJoinFull } from "react-icons/md"
+import { FaFireFlameSimple } from "react-icons/fa6"
+import { MdNaturePeople } from "react-icons/md"
 import { TbSwords } from "react-icons/tb"
 
 import {
@@ -15,78 +16,35 @@ import {
 } from './styles'
 
 
+const links = [
+  { to: "/guardians", icon: <MdNaturePeople />, text: "Guardians" },
+  { to: "/dialogue", icon: <FaForumbee />, text: "Dialogue" },
+  { to: "/conquests", icon: <TbSwords />, text: "Conquest's" },
+  { to: "/posts", icon: <FaScroll />, text: "Posts" },
+  { to: "/videos", icon: <FaVideo />, text: "Videos" },
+  { to: "/videos", icon: <FaHandsHelping />, text: "Benafaction", isDivider: true  },
+  { to: "/", icon: <FaFireFlameSimple />, text: "Auxiliership", variant: "special" },
+]
+
 const BlogSidebar = () => {
   return (
     <Sidebar>
       <Contain>
         <Content>
           <Items>
-            
-            <StyledLink to="/guardians">
-              <Item>
-                <ItemWrapper>
-                  <MdNaturePeople />
-                  <Text>Guardians</Text>
-                </ItemWrapper>
-              </Item>
-            </StyledLink>
-            
-            <StyledLink to="/dialogue">
-              <Item>
-                <ItemWrapper>
-                  <FaForumbee />
-                  <Text>Dialogue</Text>
-                </ItemWrapper>
-              </Item>
-            </StyledLink>
-
-            <StyledLink to="/dialogue">
-              <Item>
-                <ItemWrapper>
-                  <TbSwords />
-                  <Text>Conquest's</Text>
-                </ItemWrapper>
-              </Item>
-            </StyledLink>
-            
-            <StyledLink to="/posts">
-              <Item>
-                <ItemWrapper>
-                  <FaScroll />
-                  <Text>Posts</Text>
-                </ItemWrapper>
-              </Item>
-            </StyledLink>
-            
-            <StyledLink to="/videos">
-              <Item>
-                <ItemWrapper>
-                  <FaVideo />
-                  <Text>Videos</Text>
-                </ItemWrapper>
-              </Item>
-            </StyledLink>
-
-            <Divider />
-
-            <StyledLink to="/contribute">
-              <Item>
-                <ItemWrapper>
-                  <FaHandsHelping />
-                  <Text>Contribute</Text>
-                </ItemWrapper>
-              </Item>
-            </StyledLink>
-
-            <StyledLink to="/">
-              <Item>
-                <ItemWrapper>
-                  <MdJoinFull />
-                  <Text>Subscribe</Text>
-                </ItemWrapper>
-              </Item>
-            </StyledLink>
-
+            {links.map(({ to, icon, text, isDivider, variant }, index) => (
+              <>
+                {isDivider && <Divider key={`divider-${index}`} />}
+                <StyledLink to={to} key={to}>
+                  <Item special={variant === "special"}>
+                    <ItemWrapper>
+                      {icon}
+                      <Text>{text}</Text>
+                    </ItemWrapper>
+                  </Item>
+                </StyledLink>
+              </>
+            ))}
           </Items>
         </Content>
       </Contain>
