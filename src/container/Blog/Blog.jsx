@@ -1,8 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
+import { baseBlogPath } from './paths'
 
-import {
-  blogPath
-} from './paths'
 import Base from './views/index'
 
 
@@ -10,7 +8,7 @@ const Blog = () => {
   return (
     <>
     <Routes>
-      <Route path={blogPath} element={<Base />} />
+      <Route path={baseBlogPath} element={<Base />} />
     </Routes>
     </>
   )

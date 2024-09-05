@@ -50,10 +50,10 @@ const Profile = ({ isActive }) => {
         src={lalo}
         alt="Lalo Blanc"
         onLoad={() => setLoadCompleted(true)}
-        loadCompleted={loadCompleted}
+        $loadCompleted={loadCompleted}
       />
       <Badge src={badge} alt="Engilore Coat of Arms" />
-      <ActivityStatus isActive={isActive} />
+      <ActivityStatus $isActive={isActive} />
     </Photo>
   )
 }
@@ -113,7 +113,7 @@ const Hero = () => {
         <Profile isActive={isActive} />
         <Name>Lalo Blanc</Name>
         <Pronunciation>(Pronunciation: Lah-lo Blah-nk)</Pronunciation>
-        <SocialIcons/>
+        <SocialIcons />
       </ProfileCard>
 
       <DetailsCard>

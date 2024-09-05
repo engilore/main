@@ -105,3 +105,19 @@ export const RegisterLink = styled(Link)`
     text-decoration: underline;
   }
 `
+
+export const RegisterBTN = styled.button`
+    color: var(--clr-white);
+    font-family: var(--fnt-primary);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-md);
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+
+    &:hover {
+      opacity: var(--opacity-strong);
+    }
+`

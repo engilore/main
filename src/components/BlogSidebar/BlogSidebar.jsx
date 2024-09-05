@@ -1,3 +1,4 @@
+import React from 'react'
 import { FaScroll, FaForumbee, FaVideo, FaHandsHelping } from 'react-icons/fa'
 import { FaFireFlameSimple } from "react-icons/fa6"
 import { MdNaturePeople } from "react-icons/md"
@@ -33,17 +34,17 @@ const BlogSidebar = () => {
         <Content>
           <Items>
             {links.map(({ to, icon, text, isDivider, variant }, index) => (
-              <>
+              <React.Fragment key={index}>
                 {isDivider && <Divider key={`divider-${index}`} />}
                 <StyledLink to={to} key={to}>
-                  <Item special={variant === "special"}>
+                  <Item $special={variant === "special"}>
                     <ItemWrapper>
                       {icon}
                       <Text>{text}</Text>
                     </ItemWrapper>
                   </Item>
                 </StyledLink>
-              </>
+              </React.Fragment>
             ))}
           </Items>
         </Content>

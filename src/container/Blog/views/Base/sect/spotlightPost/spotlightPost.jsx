@@ -33,18 +33,18 @@ const SpotlightPost = () => {
   return (
     <Section>
       <Animation1 />
-      <Contain hasImage={!!post.image}>
+      <Contain $hasImage={!!post.image}>
         {post.image && (
           <ImageContainer>
             <Image 
               src={post.image} 
               alt={post.title}
               onLoad={() => setLoadCompleted(true)}
-              loadCompleted={loadCompleted}
+              $loadCompleted={loadCompleted}
             />
           </ImageContainer>
         )}
-        <Content hasImage={!!post.image}>
+        <Content $hasImage={!!post.image}>
           <Type>{post.type}</Type>
           <Title>{post.title}</Title>
           <Intro>{post.intro}</Intro>

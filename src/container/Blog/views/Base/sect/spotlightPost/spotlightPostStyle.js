@@ -1,5 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
 
 export const Section = styled.section`
   display: flex;
@@ -48,8 +57,13 @@ export const Image = styled.img`
   height: auto;
   border-radius: 10px;
   object-fit: cover;
-  opacity: ${props => (props.loadCompleted ? 1 : 0)};
-  transition: opacity 1.5s ease-out;
+  opacity: ${({ $loadCompleted }) => ($loadCompleted ? 1 : 0)};
+  ${({ $loadCompleted }) =>
+    $loadCompleted &&
+    css`
+      animation: ${fadeIn} 1s ease-in-out;
+    `}
+  transition: opacity 0.5s ease-in-out;
 `
 
 export const Content = styled.div`

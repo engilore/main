@@ -1,13 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
+import { registerPath, loginPath } from './paths'
 
-import { 
-    registerPath,
-    loginPath
-} from './paths'
-import {
-    Register,
-    Login
-} from './views/index'
+import { Register, Login } from './views/index'
   
   
 const Auth = () => {

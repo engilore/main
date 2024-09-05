@@ -36,6 +36,25 @@ export const Header = styled.h2`
   margin-bottom: 40px;
 `
 
+export const NoAccount = styled.p`
+  color: var(--clr-secondary);
+  font-family: var(--fnt-secondary);
+  font-size: var(--fs-md);
+  text-align: center;
+  margin-top: 40px;
+`
+
+export const LoginLink = styled(Link)`
+  color: var(--clr-primary);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  margin-left: 5px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -67,23 +86,4 @@ export const RegisterBTN = styled.button`
   border: none;
   cursor: pointer;
   padding: 10px;
-`
-
-export const NoAccount = styled.p`
-  color: var(--clr-secondary);
-  font-family: var(--fnt-secondary);
-  font-size: var(--fs-md);
-  text-align: center;
-  margin-top: 40px;
-`
-
-export const LoginLink = styled(Link)`
-  color: var(--clr-primary);
-  font-weight: var(--fw-medium);
-  cursor: pointer;
-  margin-left: 5px;
-
-  &:hover {
-    text-decoration: underline;
-  }
 `

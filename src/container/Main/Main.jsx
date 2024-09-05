@@ -1,13 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
+import { homePath, aboutPath } from './paths'
 
-import { 
-  homePath,
-  aboutPath
-} from './paths'
-import {
-  Home,
-  About
-} from './views/index'
+import { Home, About } from './views/index'
 
 
 const Main = () => {
