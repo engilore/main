@@ -37,7 +37,7 @@ export const logoutUser = async () => {
 
 
 
-export const validate = async (token) => {
+export const validateUser = async (token) => {
   try {
     const response = await fetch(validateApiUrl, {
       method: 'GET',

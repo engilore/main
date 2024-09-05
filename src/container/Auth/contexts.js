@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 
-import { logoutUser  } from './services'
+import { logoutUser, validateUser  } from './services'
 import { registerUser } from './views/Register/services'
 import { loginUser } from './views/Login/services'
 
@@ -11,6 +11,25 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
+  useEffect(() => {
+    const token = localStorage.getItem('authToken')
+    if (token) {
+      validate(token)
+    }
+  }, [])
+
+  const validate = async (token) => {
+    setIsLoading(true)
+    try {
+      const userData = await validateUser(token)
+      setUser(userData.user)
+    } catch (error) {
+      localStorage.removeItem('authToken')
+      setUser(null)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const login = async (email, password) => {
     setIsLoading(true)
