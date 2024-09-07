@@ -1,10 +1,10 @@
 import { ErrorContainer } from './styles'
 
 
-const ErrorMsg = ({ message }) => {
+const SucessComponents = ({ message }) => {
     return (
       message ? <ErrorContainer>{message}</ErrorContainer> : null
     )
   }
   
-  export default ErrorMsg
+  export default SucessComponents

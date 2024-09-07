@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts'
-
-import ErrorMsg from '../../../../components/ErrorMsg/index'
-import RegistrationForm from './components/Form'
+import ErrorMessage from '../../../../components/ErrorMessage/index'
+import Form from '../../../../components/Form/index'
 
 import {
   Section,
@@ -20,14 +19,25 @@ const Register = () => {
   const navigate = useNavigate()
   const [error, setError] = useState('')
 
+  const registrationFields = [
+    { name: 'first_name', type: 'text', placeholder: 'First Name' },
+    { name: 'last_name', type: 'text', placeholder: 'Last Name' },
+    { name: 'email', type: 'email', placeholder: 'Email' },
+    { name: 'username', type: 'text', placeholder: 'Username' },
+    { name: 'password', type: 'password', placeholder: 'Password' },
+  ]
+
   const handleRegistrationSubmit = async (formData) => {
+    setError('')
     try {
       await register(formData)
-      navigate('/')
+      navigate('/hub')
     } catch (error) {
+      console.error(error)
       setError('Registration failed. Please try again.')
     }
   }
+
 
   return (
     <Section>
@@ -35,12 +45,17 @@ const Register = () => {
         <RegisterBox>
           <Header>Register</Header>
 
-          <ErrorMsg message={error} />
+          {error && <ErrorMessage message={error} />}
 
-          <RegistrationForm onSubmit={handleRegistrationSubmit} isLoading={isLoading} />
+          <Form
+            fields={registrationFields}
+            onSubmit={handleRegistrationSubmit}
+            isLoading={isLoading}
+            buttonText="Register"
+          />
 
           <NoAccount>
-            Already have an account?
+            Already have an account? 
             <LoginLink to="/auth/login">Login</LoginLink>
           </NoAccount>
         </RegisterBox>

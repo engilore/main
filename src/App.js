@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
-import { mainPath, authPath, blogPath } from './container/paths'
+import ProtectedRoute from './utils/projectedRoute'
+import { hubPath, settingsPath, mainPath, authPath, blogPath } from './container/paths'
 
 import Navbar from './components/Navbar/index'
 import Footer from './components/Footer/index'
-import { Main, Blog, Auth } from './container/index'
+import { Hub, Settings, Main, Blog, Auth } from './container/index'
 
 
 function App() {
@@ -11,10 +12,26 @@ function App() {
     <>
       <Navbar/>
       <Routes>
-
-      <Route path={mainPath + "*"} element={<Main />} />
-      <Route path={authPath + "/*"} element={<Auth />} />
-      <Route path={blogPath + "/*"} element={<Blog />} />
+        
+        <Route 
+            path={hubPath + "/*"} 
+            element={
+              <ProtectedRoute allowedRoles={['guardian', 'admin']}>
+                <Hub />
+              </ProtectedRoute>
+            } 
+          />
+        <Route 
+          path={settingsPath + "/*"} 
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          } 
+        />
+        <Route path={mainPath + "*"} element={<Main />} />
+        <Route path={authPath + "/*"} element={<Auth />} />
+        <Route path={blogPath + "/*"} element={<Blog />} />
 
       </Routes>
       <Footer />

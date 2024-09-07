@@ -79,6 +79,7 @@ export const Name = styled.h1`
 export const NavLinks = styled.div`
     display: flex;
     align-items: center;
+    margin-right: 5px;
 
     @media (max-width: 768px) {
         display: none;
@@ -153,7 +154,10 @@ export const HamburgerMenu = styled.div`
 
 export const MobileMenu = styled.div`
     background-color: var(--bg-white);
-    border-top: 1px solid var(--bg-light);
+    border: 2px;
+    border-bottom: solid;
+    border-color: var(--bg-light);
+    box-shadow: var(--shadow-md);
     display: flex;
     flex-direction: column;
     align-items: center;

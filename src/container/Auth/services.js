@@ -1,45 +1,12 @@
 import { baseUrl } from '../../services/api'
-import { authUrl, logoutUrl, validateUrl } from './urls'
-
-const logoutApiUrl = `${baseUrl}${authUrl}${logoutUrl}`
-const validateApiUrl = `${baseUrl}${authUrl}${validateUrl}`
-
-
-export const logoutUser = async () => {
-  try {
-    const token = localStorage.getItem('authToken')
-    localStorage.removeItem('authToken')
-
-    const response = await fetch(logoutApiUrl, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Token ${token}`,
-        'Content-Type': 'application/json',
-      },
-    })
-
-    if (!response.ok) {
-      const errMessage = await response.text()
-      console.error(`Failed to log out: ${response.status} ${errMessage}`)
-      return
-    }
-
-    const contentType = response.headers.get('Content-Type')
-    if (contentType && contentType.includes('application/json')) {
-      return await response.json()
-    }
-
-    return {}
-  } catch (error) {
-    console.error('Logout Error:', error.message)
-  }
-}
-
+import { authUrl, validateUrl, updateUrl } from './urls'
 
 
 export const validateUser = async (token) => {
+  const apiUrl = `${baseUrl}${authUrl}${validateUrl}`
+
   try {
-    const response = await fetch(validateApiUrl, {
+    const response = await fetch(apiUrl, {
       method: 'GET',
       headers: {
         'Authorization': `Token ${token}`,
@@ -48,6 +15,9 @@ export const validateUser = async (token) => {
     })
 
     if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error('Unauthorized: Invalid or expired token')
+      }
       const errMessage = await response.text()
       throw new Error(`Failed to validate token: ${response.status} ${errMessage}`)
     }
@@ -57,4 +27,24 @@ export const validateUser = async (token) => {
     console.error('Validation Error:', error.message)
     throw error
   }
+}
+
+export const updateUser = async (token, formData) => {
+  const apiUrl = `${baseUrl}${authUrl}${updateUrl}`
+
+  const response = await fetch(apiUrl, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Token ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+
+  if (!response.ok) {
+    const errorData = await response.json()
+    throw new Error(`Update failed: ${response.status} ${errorData.message || errorData.error || 'Unknown error'}`)
+  }
+
+  return await response.json()
 }

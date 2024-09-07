@@ -1,32 +1,42 @@
+import Form from '../../../../../../components/Form/index'
+
 import {
     Section,
     Contain,
-    Content,
-    Header,
+    FormWrapper,
+    Heading,
     Description,
-    SubscribeForm,
-    Input,
-    Button
 } from './subscribeStyle'
 
 
 const Subscribe = () => {
+  const handleSubscribe = async (formData) => {
+    console.log('Subscribed with email:', formData.email)
+  }
+
+  const subscribeField = [
+    { name: 'email', type: 'email', placeholder: 'Email' },
+  ]
+
   return (
     <Section>
-    <Contain>
-        <Header>The Engilore Publication</Header>
+      <Contain>
+        <Heading>The Engilore Publication</Heading>
         <Description>
-            Subscribe for early alerts on Engilore's Guardians' latest publications.
+          Subscribe for early alerts on Engilore's Guardians' latest publications.
         </Description>
-        <Content>
-        <SubscribeForm>
-            <Input placeholder="Enter your email"></Input>
-            <Button>Subscribe</Button>
-        </SubscribeForm>
-        </Content>
-    </Contain>
+
+        <FormWrapper>
+          <Form 
+            fields={subscribeField}
+            onSubmit={handleSubscribe} 
+            isLoading={false} 
+            buttonText="Subscribe" 
+          />
+        </FormWrapper>
+      </Contain>
     </Section>
   )
 }
 
-export default Subscribe;
+export default Subscribe

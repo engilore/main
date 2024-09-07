@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { FaFireFlameSimple } from 'react-icons/fa6'
+import Button from '../../../../../../components/Button/index'
+
 import {
   Section,
   Contain,
@@ -9,10 +10,9 @@ import {
   ImageContainer,
   Image,
   MembershipContainer,
-  MemberBTN,
 } from './heroStyle'
-
 import clint from '../../../../../../assets/clint.png'
+import { FaFireFlameSimple } from 'react-icons/fa6'
 
 
 const Hero = () => {
@@ -28,10 +28,16 @@ const Hero = () => {
             challenging the staid and stirring the stagnant.
           </Description>
           <MembershipContainer>
-            <MemberBTN to="/auxiliership">
-              Become a Auxiliary
-              <FaFireFlameSimple />
-            </MemberBTN>
+            <Button
+              text="Become a Auxiliary"
+              size="medium"
+              shape="pill"
+              bgColor="var(--bg-primary)"
+              hoverColor="none"
+              icon={<FaFireFlameSimple />}
+              iconRight={false}
+              to="/auxiliership"
+            />
           </MembershipContainer>
         </Content>
         <ImageContainer>

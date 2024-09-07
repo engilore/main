@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 
-export const Sidebar = styled.div`
+export const Side = styled.div`
   background-color: var(--bg-white);
   width: 100%;
   display: flex;
@@ -30,6 +30,21 @@ export const Content = styled.div`
   width: 100%;
 `
 
+export const Title = styled.h3`
+  color: var(--clr-secondary);
+  font-family: var(--fnt-primary);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-lg);
+  margin-top: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`
+
 export const Items = styled.div`
   display: flex;
   flex-direction: column;
@@ -45,15 +60,13 @@ export const Item = styled.div`
   border-radius: var(--radius-pill);
   width: 100%;
   padding: 10px 20px;
-  margin-top: 3px;
-  margin-bottom: 3px;
   cursor: pointer;
 
   &:hover {
     background-color: var(--bg-light);
   }
 
-  ${({ special }) => special && `
+  ${({ $special }) => $special && `
     color: var(--clr-white);
     background-color: var(--bg-primary);
 
@@ -100,4 +113,12 @@ export const Divider = styled.hr`
   @media (max-width: 768px) {
     margin: 10px 0;
   }
+`
+
+export const ItemContainer = styled.div`
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `

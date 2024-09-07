@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts'
-
-import ErrorMsg from '../../../../components/ErrorMsg/index'
-import LoginForm from './components/Form'
+import ErrorMessage from '../../../../components/ErrorMessage/index'
+import Form from '../../../../components/Form/index'
 
 import {
   Section,
   Contain,
   LoginBox,
   Header,
+  ForgotLink,
+  NoAccount,
+  RegisterLink
 } from './style'
 
 
@@ -18,12 +20,18 @@ const Login = () => {
   const navigate = useNavigate()
   const [error, setError] = useState('')
 
-  const handleLogin = async (identifier, password) => {
+  const loginFields = [
+    { name: 'identifier', type: 'text', placeholder: 'Username or Email' },
+    { name: 'password', type: 'password', placeholder: 'Password' }
+  ]
+
+  const handleLogin = async (formData) => {
     setError('')
     try {
-      await login(identifier, password)
-      navigate('/')
+      await login(formData.identifier, formData.password)
+      navigate('/hub')
     } catch (error) {
+      console.error('Login error:', error)
       setError('Login failed. Please try again.')
     }
   }
@@ -32,11 +40,27 @@ const Login = () => {
     <Section>
       <Contain>
         <LoginBox>
+          
           <Header>Login</Header>
 
-          <ErrorMsg message={error} />
+          <ErrorMessage message={error} />
 
-          <LoginForm onLogin={handleLogin} isLoading={isLoading} />
+          <Form
+            fields={loginFields}
+            onSubmit={handleLogin}
+            isLoading={isLoading}
+            buttonText="Login"
+          />
+
+          <ForgotLink to="/auth/forgot-password">
+            Forgot Password?
+          </ForgotLink>
+
+          <NoAccount>
+            Don’t have an account? 
+            <RegisterLink to="/auth/register">Register</RegisterLink>
+          </NoAccount>
+
         </LoginBox>
       </Contain>
     </Section>

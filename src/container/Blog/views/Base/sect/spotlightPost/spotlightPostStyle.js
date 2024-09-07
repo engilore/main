@@ -118,30 +118,3 @@ export const Intro = styled.p`
     font-size: var(--fs-lg);
   }
 `
-
-export const Button = styled.a`
-  color: var(--clr-white);
-  background-color: var(--clr-primary);
-  font-family: var(--fnt-primary);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-md);
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-
-  &:hover {
-    background-color: var(--bg-black);
-  }
-`
-
-export const ButtonText = styled.span`
-  margin-right: 8px;
-`
-
-export const ButtonIcon = styled.span`
-  display: flex;
-  align-items: center;
-`

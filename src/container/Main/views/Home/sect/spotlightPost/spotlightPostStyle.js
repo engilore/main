@@ -138,13 +138,3 @@ export const TagPills = styled.div`
     justify-content: center;
   }
 `
-
-export const Tag = styled.span`
-  background-color: var(--bg-primary);
-  color: var(--clr-white);
-  font-family: var(--fnt-primary);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
-  border-radius: var(--radius-pill);
-  padding: 5px 10px;
-`

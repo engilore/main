@@ -74,13 +74,15 @@ export const LoginBTN = styled.button`
     }
 `
 
-export const Forgot = styled.p`
+// Changed Forgot to use Link
+export const ForgotLink = styled(Link)`
   color: var(--clr-secondary);
   font-family: var(--fnt-secondary);
   font-size: var(--fs-sm);
   text-align: right;
   margin: 10px 0;
   cursor: pointer;
+  display: block;
 
   &:hover {
     text-decoration: underline;
