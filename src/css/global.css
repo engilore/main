@@ -6,6 +6,8 @@
     --clr-primary: #212529;
     --clr-secondary: #6C757D;
     --clr-accent: #edf0da;
+    --clr-success: #0C7C59;
+    --clr-danger: #B21E35;
     --clr-black: black;
     --clr-grey: grey;
     --clr-white: white;
@@ -14,7 +16,11 @@
     --bg-primary: #5ca4a9;
     --bg-secondary: #4f000b;
     --bg-accent: #edf0da;
+    --bg-success: #A0E8AF;
+    --bg-danger: #E39695;
     --bg-light: #E6E8E6;
+    --bg-dark: #212529;
+    --bg-premium: #968E85;
     --bg-white: white;
     --bg-black: black;
 
@@ -47,6 +53,12 @@
     --radius-xl: 15px;
     --radius-pill: 50px;
     --radius-circle: 50%;
+
+    /* Button Padding */
+    --btn-padding-base: 8px 15px;
+    --btn-padding-sm: 5px 10px;
+    --btn-padding-md: 10px 20px;
+    --btn-padding-lg: 15px 30px;
 
     /* Shadow */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);

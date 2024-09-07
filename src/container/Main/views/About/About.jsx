@@ -1,7 +1,4 @@
-import {
-    HeroSection,
-    CoatSection,
-} from './sect/index'
+import { HeroSection, CoatSection } from './sect/index'
 
 
 const About = () => {

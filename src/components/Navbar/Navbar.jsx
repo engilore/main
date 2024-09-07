@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
-import logo from '../../assets/logo.svg'
+import { useAuth } from '../../container/Auth/contexts'
+import Button from '../Button/index'
+import ProfileMenu from '../ProfileMenu/index'
 
 import {
   Nav,
@@ -10,63 +12,68 @@ import {
   RightSection,
   NavLinks,
   NavLink,
-  LoginButton,
-  LoginHamButton,
   HamburgerMenu,
   MobileMenu,
-  MobileMenuLink
+  MobileMenuLink,
 } from './styles'
+import logo from '../../assets/logo.svg'
 
 
 const Navbar = () => {
+  const { user } = useAuth()
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen)
-  }
-
-  const closeMobileMenu = () => {
-    if (window.innerWidth > 768) {
-      setMobileMenuOpen(false)
-    }
-  }
+  const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen)
+  const closeMobileMenu = () => window.innerWidth > 768 && setMobileMenuOpen(false)
 
   useEffect(() => {
     window.addEventListener('resize', closeMobileMenu)
-    return () => {
-      window.removeEventListener('resize', closeMobileMenu)
-    }
+    return () => window.removeEventListener('resize', closeMobileMenu)
   }, [])
-
-  const handleLinkClick = () => {
-    setMobileMenuOpen(false)
-  }
 
   return (
     <Nav>
       <Contain>
-        <Brand to="/">
+        <Brand to="/" onClick={() => setMobileMenuOpen(false)}>
           <Logo src={logo} alt="Engilore Logo" />
           <Name>Engilore</Name>
         </Brand>
+
         <RightSection>
           <NavLinks>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/blog">Blog</NavLink>
           </NavLinks>
-          <LoginButton to="/login" className="desktop">Sign In</LoginButton>
-          <HamburgerMenu onClick={toggleMobileMenu}>
-            ☰
-          </HamburgerMenu>
+
+          {user ? (
+            <ProfileMenu />
+          ) : (
+            <Button
+              text="Sign In"
+              size="base"
+              shape="rounded"
+              bgColor="var(--bg-primary)"
+              hoverColor="none"
+              to="/auth/login"
+            />
+          )}
+
+          <HamburgerMenu onClick={toggleMobileMenu}>☰</HamburgerMenu>
         </RightSection>
       </Contain>
+
       {isMobileMenuOpen && (
         <MobileMenu>
-          <MobileMenuLink to="/" onClick={handleLinkClick}>Home</MobileMenuLink>
-          <MobileMenuLink to="/about" onClick={handleLinkClick}>About</MobileMenuLink>
-          <MobileMenuLink to="/blog" onClick={handleLinkClick}>Blog</MobileMenuLink>
-          <LoginHamButton to="/login" onClick={handleLinkClick}>Sign In</LoginHamButton>
+          <MobileMenuLink to="/" onClick={() => setMobileMenuOpen(false)}>
+            Home
+          </MobileMenuLink>
+          <MobileMenuLink to="/about" onClick={() => setMobileMenuOpen(false)}>
+            About
+          </MobileMenuLink>
+          <MobileMenuLink to="/blog" onClick={() => setMobileMenuOpen(false)}>
+            Blog
+          </MobileMenuLink>
         </MobileMenu>
       )}
     </Nav>

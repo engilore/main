@@ -1,2 +1,2 @@
 
-export const blogPath = "/blog"
+export const basePath = "/"

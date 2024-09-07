@@ -1,3 +1,5 @@
+import Tag from '../../../../../../components/Tag/index'
+
 import {
   Section,
   Post,
@@ -9,7 +11,6 @@ import {
   PostType,
   Header,
   TagPills,
-  Tag
 } from './spotlightPostStyle'
 
 const spotlightPostData = {
@@ -41,7 +42,13 @@ const SpotlightPost = () => {
           <Intro>{spotlightPostData.intro}</Intro>
           <TagPills>
             {spotlightPostData.tags.map(tag => (
-              <Tag key={tag}>{tag}</Tag>
+              <Tag
+                key={tag}
+                text={tag}
+                textColor="var(--clr-white)"
+                bgColor="var(--bg-primary)"
+                outlined={false}     
+              />
             ))}
           </TagPills>
         </Contain>

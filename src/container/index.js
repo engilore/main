@@ -1,5 +1,7 @@
+import Hub from './Hub/index'
+import Settings from './Settings/index'
 import Main from './Main/index'
-import Blog from './Blog/index'
 import Auth from './Auth/index'
+import Blog from './Blog/index'
 
-export { Main, Blog, Auth }
+export { Hub, Settings, Main, Auth, Blog }

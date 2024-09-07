@@ -1,3 +1,5 @@
+import Tag from '../../../../components/Tag/index'
+
 import {
     PostContainer,
     Title,
@@ -5,8 +7,8 @@ import {
     PostType,
     PostDate,
     TagPills,
-    Tag
 } from './styles'
+
 
 const posts = [
   {
@@ -43,7 +45,7 @@ const Post = ({ count = 4 }) => {
   return (
     <>
       {posts.slice(0, count).map((post, index) => (
-        <PostContainer to={`/post-url-${index}`} key={index}>
+        <PostContainer key={index}>
           <Title>{post.title}</Title>
           <PostMeta>
             <PostType>
@@ -55,7 +57,14 @@ const Post = ({ count = 4 }) => {
           </PostMeta>
           <TagPills>
             {post.tags.map(tag => (
-              <Tag key={tag}>{tag}</Tag>
+                <Tag
+                  key={tag}
+                  text={tag}
+                  textColor="var(--clr-secondary)"
+                  bgColor="var(--bg-light)"
+                  outlined={true}     
+                  borderColor="var(--bg-light)"
+                />
             ))}
           </TagPills>
         </PostContainer>

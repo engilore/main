@@ -1,5 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
 
 export const Section = styled.section`
   display: flex;
@@ -48,8 +57,13 @@ export const Image = styled.img`
   height: auto;
   border-radius: 10px;
   object-fit: cover;
-  opacity: ${props => (props.loadCompleted ? 1 : 0)};
-  transition: opacity 1.5s ease-out;
+  opacity: ${({ $loadCompleted }) => ($loadCompleted ? 1 : 0)};
+  ${({ $loadCompleted }) =>
+    $loadCompleted &&
+    css`
+      animation: ${fadeIn} 1s ease-in-out;
+    `}
+  transition: opacity 0.5s ease-in-out;
 `
 
 export const Content = styled.div`
@@ -103,31 +117,4 @@ export const Intro = styled.p`
   @media (max-width: 768px) {
     font-size: var(--fs-lg);
   }
-`
-
-export const Button = styled.a`
-  color: var(--clr-white);
-  background-color: var(--clr-primary);
-  font-family: var(--fnt-primary);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-md);
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-
-  &:hover {
-    background-color: var(--bg-black);
-  }
-`
-
-export const ButtonText = styled.span`
-  margin-right: 8px;
-`
-
-export const ButtonIcon = styled.span`
-  display: flex;
-  align-items: center;
 `

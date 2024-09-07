@@ -1,6 +1,14 @@
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
 
 export const Section = styled.section`
   display: flex;
@@ -82,28 +90,6 @@ export const MembershipContainer = styled.div`
   }
 `
 
-export const MemberBTN = styled(Link)`
-  color: var(--clr-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-family: var(--fnt-primary);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-md);
-  background-color: var(--bg-primary);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 0.75rem 1rem;
-  text-decoration: none;
-
-  &:hover {
-        opacity: var(--opacity-strong);
-    }
-`
-
-
 export const ImageContainer = styled.div`
   flex: 1;
   display: flex;
@@ -119,8 +105,13 @@ export const ImageContainer = styled.div`
 export const Image = styled.img`
   width: 100%;
   height: auto;
-  opacity: ${props => (props.loadCompleted ? 1 : 0)};
-  transition: opacity 1.5s ease-out;
+  opacity: ${({ $hasImage }) => ($hasImage ? 1 : 0)};
+  ${({ $hasImage }) =>
+    $hasImage &&
+    css`
+      animation: ${fadeIn} 1s ease-in-out;
+    `}
+  transition: opacity 0.5s ease-in-out;
   border-radius: 10px;
   object-fit: cover;
 `

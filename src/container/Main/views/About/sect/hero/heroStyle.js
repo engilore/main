@@ -60,8 +60,12 @@ export const ProfileImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: ${props => (props.loadCompleted ? 1 : 0)};
-  animation: ${fadeIn} 1.5s ease-out forwards;
+  opacity: ${({ $loadCompleted }) => ($loadCompleted ? 1 : 0)};
+  ${({ $loadCompleted }) =>
+    $loadCompleted &&
+    css`
+      animation: ${fadeIn} 1s ease-in-out;
+    `}
   transition: opacity 0.5s ease-in-out;
   border-radius: 50%;
   z-index: 1;
@@ -74,10 +78,15 @@ export const ActivityStatus = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: ${props => (props.isActive ? '#5FDD9D' : 'grey')};
+  background-color: ${({ $isActive }) => ($isActive ? '#5FDD9D' : 'grey')};
   z-index: 3;
   border: 2px solid white;
-  animation: ${props => (props.isActive ? css`${blink} 2s linear infinite` : 'none')};
+  
+  ${({ $isActive }) =>
+    $isActive &&
+    css`
+      animation: ${blink} 2s linear infinite;
+    `}
 `
 
 export const Badge = styled.img`

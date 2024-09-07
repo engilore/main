@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { FaArrowRightLong } from "react-icons/fa6"
 
-import { 
-  Animation1
-} from '../../../../../../components/Canvas/index'
+import Button from '../../../../../../components/Button/index'
+import { Animation1 } from '../../../../../../components/Canvas/index'
+
 import {
   Section,
   Contain,
@@ -12,11 +11,9 @@ import {
   Content,
   Type,
   Title,
-  Intro,
-  Button,
-  ButtonText,
-  ButtonIcon
+  Intro
 } from './spotlightPostStyle'
+import { FaArrowRightLong } from 'react-icons/fa6'
 
 
 const SpotlightPost = () => {
@@ -29,31 +26,34 @@ const SpotlightPost = () => {
   }
   const [loadCompleted, setLoadCompleted] = useState(false)
 
-
   return (
     <Section>
       <Animation1 />
-      <Contain hasImage={!!post.image}>
+      <Contain $hasImage={!!post.image}>
         {post.image && (
           <ImageContainer>
             <Image 
               src={post.image} 
               alt={post.title}
               onLoad={() => setLoadCompleted(true)}
-              loadCompleted={loadCompleted}
+              $loadCompleted={loadCompleted}
             />
           </ImageContainer>
         )}
-        <Content hasImage={!!post.image}>
+        <Content $hasImage={!!post.image}>
           <Type>{post.type}</Type>
           <Title>{post.title}</Title>
           <Intro>{post.intro}</Intro>
-          <Button href={post.link}>
-            <ButtonText>Continue Reading</ButtonText>
-            <ButtonIcon>
-              <FaArrowRightLong />
-            </ButtonIcon>
-          </Button>
+          <Button
+            text="Continue Reading"
+            size="medium"
+            shape="rounded"
+            bgColor="var(--bg-dark)"
+            hoverColor="none"
+            icon={<FaArrowRightLong />}
+            iconRight
+            to={post.link}
+          />
         </Content>
       </Contain>
     </Section>

@@ -1,13 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
+import { registerPath, loginPath, logoutPath } from './paths'
 
-import { 
-    registerPath,
-    loginPath
-} from './paths'
-import {
-    Register,
-    Login
-} from './views/index'
+import { Register, Login, Logout } from './views/index'
   
   
 const Auth = () => {
@@ -16,6 +10,7 @@ const Auth = () => {
     <Routes>
       <Route path={registerPath} element={<Register />} />
       <Route path={loginPath} element={<Login />} />
+      <Route path={logoutPath} element={<Logout />} />
     </Routes>
     </>
   )
