@@ -48,7 +48,8 @@ const ProfileMenu = () => {
             <ProfileDropdownLink to='/hub'>Hub</ProfileDropdownLink>
           )}
           <ProfileDropdownLink to='/profile'>Profile</ProfileDropdownLink>
-          <ProfileDropdownLink to='/settings'>Settings</ProfileDropdownLink>
+
+          <ProfileDropdownLink to='/account'>Account</ProfileDropdownLink>
 
           <ProfileDropdownLink to='/auth/logout/'>
             Sign Out

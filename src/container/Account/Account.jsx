@@ -9,18 +9,18 @@ import { MdDeleteOutline } from 'react-icons/md'
 import { HiOutlineLogout } from 'react-icons/hi'
 
 
-const settingLinks = [
-  { title: "Account", to: "/settings", text: "Profile" },
+const accountLinks = [
+  { title: "Account", to: "/account", text: "Profile" },
     { to: "/", text: "Preference's" },
   { to: "/", text: "Notification's" },
   { title: "Subscription", to: "/", text: "Manage" },
   { title: "Auxiliership", to: "/", text: "Manage" },
   { to: "/", text: "Join",},
   { to: "/auth/logout", icon: <HiOutlineLogout />, text: "Sign Out", variant: "special", isDivider: true, textColor: "var(--clr-primary)", bgColor: "transparent"},
-  { to: "/settings/delete", icon: <MdDeleteOutline />, text: "Delete", variant: "special", textColor: "var(--clr-danger)", bgColor: "var(--bg-danger)"},
+  { to: "/account/delete", icon: <MdDeleteOutline />, text: "Delete", variant: "special", textColor: "var(--clr-danger)", bgColor: "var(--bg-danger)"},
 ]
 
-const Settings = () => {
+const Account = () => {
   return (
     <>
     <Layout>
@@ -31,11 +31,11 @@ const Settings = () => {
       </Routes>
       </MainContent>
       <SidebarWrapper>
-        <Sidebar links={settingLinks} />
+        <Sidebar links={accountLinks} />
       </SidebarWrapper>
     </Layout>
     </>
   )
 }
 
-export default Settings
+export default Account

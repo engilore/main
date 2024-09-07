@@ -1,7 +1,7 @@
 import { HeroSection } from './sect/index'
 
 
-const Dash = () => {
+const Base = () => {
   return (
     <>
     <HeroSection />
@@ -9,4 +9,4 @@ const Dash = () => {
   )
 }
 
-export default Dash
+export default Base

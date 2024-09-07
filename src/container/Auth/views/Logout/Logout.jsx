@@ -1,35 +1,35 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts'
+import Loading from '../../../../components/Loading'
 
 
 const Logout = () => {
   const { logout, user } = useAuth()
   const navigate = useNavigate()
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
 
   useEffect(() => {
     const handleLogout = async () => {
+      setIsLoggingOut(true)
+
       try {
         await logout()
       } catch (error) {
         console.error('Logout failed:', error)
       } finally {
-        navigate('/auth/login')
+        navigate('/blog')
       }
     }
 
     if (user) {
       handleLogout()
     } else {
-      navigate('/auth/login')
+      navigate('/blog')
     }
   }, [user, logout, navigate])
 
-  return (
-    <div>
-      <h2>Logging out...</h2>
-    </div>
-  )
+  return isLoggingOut ? <Loading /> : null
 }
 
 export default Logout

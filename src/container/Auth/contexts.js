@@ -68,14 +68,14 @@ export const AuthProvider = ({ children }) => {
   
     if (!token) {
       setUser(null)
-      return navigate('/auth/login')
+      return navigate('/blog')
     }
   
     try {
       await logoutUser(token)
       setUser(null)
       localStorage.removeItem('authToken')
-      navigate('/auth/login')
+      navigate('/blog')
     } catch (error) {
       console.error('Failed to log out:', error)
       setUser(null)

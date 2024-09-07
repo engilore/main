@@ -1,3 +1,3 @@
 import Base from './Base/index'
 
-export { Base }
+export default Base

@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
 import { basePath } from './paths'
 
-import { Base } from './views/index'
+import Base from './views/index'
 
 
-const Hub = () => {
+const Profile = () => {
   return (
     <>
     <Routes>
@@ -14,4 +14,4 @@ const Hub = () => {
   )
 }
 
-export default Hub
+export default Profile
