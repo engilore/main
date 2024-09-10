@@ -32,14 +32,13 @@ export const ProfileDropdown = styled.div`
   top: 50px;
   right: 0;
   background-color: var(--bg-white);
-  border: 1px solid var(--bg-light);
+  border: 2px solid var(--bg-light);
   border-radius: var(--radius-md);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 150px;
   display: flex;
   flex-direction: column;
   padding: 10px 0;
-  z-index: 1000;
+  z-index: 1500;
 `
 
 export const ProfileDropdownLink = styled(Link)`

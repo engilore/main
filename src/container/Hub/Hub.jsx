@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
-import { dashPath } from './paths'
+import { basePath } from './paths'
 
-import { Dash } from './views/index'
+import { Base } from './views/index'
 
 
 const Hub = () => {
   return (
     <>
     <Routes>
-      <Route path={dashPath} element={<Dash />} />
+      <Route path={basePath} element={<Base />} />
     </Routes>
     </>
   )

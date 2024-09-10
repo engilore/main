@@ -1,7 +1,5 @@
-import { Link } from 'react-router-dom'
-
-import { BaseButton, ButtonIcon } from './styles'
-
+import { Link } from 'react-router-dom';
+import { BaseButton, ButtonIcon } from './styles';
 
 const Button = ({
   text,
@@ -19,13 +17,13 @@ const Button = ({
   ...rest
 }) => {
   const buttonProps = {
-    size,
-    shape,
-    bgColor,
-    textColor,
-    hoverColor,
-    iconRight,
-  }
+    $size: size,
+    $shape: shape,
+    $bgColor: bgColor,
+    $textColor: textColor,
+    $hoverColor: hoverColor,
+    $iconRight: iconRight,
+  };
 
   if (to) {
     return (
@@ -37,9 +35,9 @@ const Button = ({
       >
         {!iconRight && icon && <ButtonIcon>{icon}</ButtonIcon>}
         {text}
-        {iconRight && icon && <ButtonIcon iconRight>{icon}</ButtonIcon>}
+        {iconRight && icon && <ButtonIcon $iconRight>{icon}</ButtonIcon>}
       </BaseButton>
-    )
+    );
   }
 
   if (href) {
@@ -52,9 +50,9 @@ const Button = ({
       >
         {!iconRight && icon && <ButtonIcon>{icon}</ButtonIcon>}
         {text}
-        {iconRight && icon && <ButtonIcon iconRight>{icon}</ButtonIcon>}
+        {iconRight && icon && <ButtonIcon $iconRight>{icon}</ButtonIcon>}
       </BaseButton>
-    )
+    );
   }
 
   return (
@@ -66,9 +64,9 @@ const Button = ({
     >
       {!iconRight && icon && <ButtonIcon>{icon}</ButtonIcon>}
       {text}
-      {iconRight && icon && <ButtonIcon iconRight>{icon}</ButtonIcon>}
+      {iconRight && icon && <ButtonIcon $iconRight>{icon}</ButtonIcon>}
     </BaseButton>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

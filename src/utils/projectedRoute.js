@@ -1,13 +1,7 @@
 import { Navigate, useLocation } from 'react-router-dom'
-import { useAuth } from '../container/Auth/contexts'
+import { useAuth } from '../contexts/authContexts'
+import Loading from '../components/Loading/index'
 
-/**
- * @param {Object} props - The props object.
- * @param {React.ReactNode} props.children - The component(s) to render if conditions are met.
- * @param {string[]} [props.allowedRoles] - Optional roles required to access the route.
- * @param {string} [props.redirectPath='/auth/login'] - Path to redirect to if not authenticated or authorized.
- * @param {boolean} [props.requireAuth=true] - Whether authentication is required to access the route.
- */
 
 const ProtectedRoute = ({
   children,
@@ -19,7 +13,7 @@ const ProtectedRoute = ({
   const location = useLocation()
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <Loading />
   }
 
   if (requireAuth && !user) {
@@ -29,7 +23,7 @@ const ProtectedRoute = ({
   if (allowedRoles.length > 0) {
     const hasAllowedRole = allowedRoles.some(role => user[`is_${role}`])
     if (!hasAllowedRole) {
-      return <Navigate to="/" replace />
+      return <Navigate to="/blog" replace />
     }
   }
 

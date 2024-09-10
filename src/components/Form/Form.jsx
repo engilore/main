@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import Button from '../Button/index'
+
 import { 
   Form,
   Input,
   FieldContainer,
   Label,
   ToggleButton,
-  InputContainer 
+  InputContainer,
+  Select
 } from './styles'
 import { TbEye, TbEyeClosed } from "react-icons/tb"
 
@@ -51,13 +53,29 @@ const DynamicForm = ({ fields, onSubmit, isLoading, buttonText }) => {
         <FieldContainer key={field.name}>
           {field.title && <Label>{field.title}</Label>}
           <InputContainer>
-            <Input
-              type={passwordVisibility[field.name] ? 'text' : field.type}
-              name={field.name}
-              placeholder={field.placeholder || field.label}
-              value={formData[field.name] || ''}
-              onChange={handleChange}
-            />
+            {field.type === 'select' ? (
+              <Select
+                name={field.name}
+                value={formData[field.name]}
+                onChange={handleChange}
+              >
+                <option value="">Select an option</option>
+                {field.options && field.options.map(option => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </Select>
+            ) : (
+              <Input
+                type={passwordVisibility[field.name] ? 'text' : field.type}
+                name={field.name}
+                placeholder={field.placeholder || field.label}
+                value={formData[field.name] || ''}
+                onChange={handleChange}
+              />
+            )}
+
             {field.type === 'password' && (
               <ToggleButton
                 type="button"

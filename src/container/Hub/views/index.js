@@ -1,3 +1,3 @@
-import Dash from './Dash/index'
+import Base from './Base/index'
 
-export { Dash }
+export { Base }

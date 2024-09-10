@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
 import ProtectedRoute from './utils/projectedRoute'
-import { hubPath, settingsPath, mainPath, authPath, blogPath } from './container/paths'
+import { hubPath, accountPath, profilePath, mainPath, authPath, blogPath } from './container/paths'
 
 import Navbar from './components/Navbar/index'
 import Footer from './components/Footer/index'
-import { Hub, Settings, Main, Blog, Auth } from './container/index'
+import { Hub, Account, Profile, Main, Blog, Auth } from './container/index'
 
 
 function App() {
@@ -22,10 +22,18 @@ function App() {
             } 
           />
         <Route 
-          path={settingsPath + "/*"} 
+          path={accountPath + "/*"} 
           element={
             <ProtectedRoute>
-              <Settings />
+              <Account />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path={profilePath + "/*"} 
+          element={
+            <ProtectedRoute>
+              <Profile />
             </ProtectedRoute>
           } 
         />

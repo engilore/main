@@ -1,3 +1,3 @@
 
-export const dashPath = "/"
+export const basePath = "/"
 

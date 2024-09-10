@@ -1,8 +1,9 @@
+import { useSidebar } from '../../../../contexts/sidebarContexts'
 import Sidebar from '../../../../components/Sidebar/index'
+import ToggleButton from '../../../../components/Sidebar/SidebarToggle'
 import { SpotlightPostSection, FeaturedPostsSection } from './sect/index'
 
-import { Layout, MainContent, SidebarWrapper } from './styles'
-
+import { Layout, MainContent } from './styles'
 import { FaScroll, FaForumbee, FaVideo, FaHandsHelping } from 'react-icons/fa'
 import { FaFireFlameSimple } from "react-icons/fa6"
 import { MdNaturePeople } from "react-icons/md"
@@ -21,6 +22,8 @@ const blogLinks = [
 
 
 const Base = () => {
+  const { isSidebarVisible, toggleSidebar } = useSidebar()
+
   return (
     <>
       <SpotlightPostSection />
@@ -28,9 +31,14 @@ const Base = () => {
         <MainContent>
           <FeaturedPostsSection />
         </MainContent>
-        <SidebarWrapper>
-          <Sidebar links={blogLinks} />
-        </SidebarWrapper>
+
+        <Sidebar
+          links={blogLinks}
+          isSidebarVisible={isSidebarVisible}
+          toggleSidebar={toggleSidebar}
+        />
+
+        {!isSidebarVisible && <ToggleButton toggleSidebar={toggleSidebar} />}
       </Layout>
     </>
   )

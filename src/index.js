@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import { AuthProvider } from './container/Auth/contexts'
+import { AuthProvider } from './contexts/authContexts'
+import { SidebarProvider } from './contexts/sidebarContexts'
 
 import App from './App'
 
@@ -15,7 +16,9 @@ root.render(
   <React.StrictMode>
   <Router>
   <AuthProvider>
-    <App />
+    <SidebarProvider>
+      <App />
+    </SidebarProvider>
   </AuthProvider>
   </Router>
   </React.StrictMode>
