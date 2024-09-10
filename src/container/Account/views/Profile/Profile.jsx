@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAuth } from '../../../Auth/contexts'
+import { useAuth } from '../../../../contexts/authContexts'
 import { updateUser } from '../../../Auth/services'
 import Form from '../../../../components/Form/index'
 import ErrorMessage from '../../../../components/ErrorMessage/index'

@@ -1,17 +1,18 @@
 import { Routes, Route } from 'react-router-dom'
+import { useSidebar } from '../../contexts/sidebarContexts'
 import { profilePath, deletePath } from './paths'
-
+import ToggleButton from '../../components/Sidebar/SidebarToggle'
 import Sidebar from '../../components/Sidebar/index'
 import { Profile, Delete } from './views/index'
 
-import { Layout, MainContent, SidebarWrapper } from './styles'
+import { Layout, MainContent } from './styles'
 import { MdDeleteOutline } from 'react-icons/md'
 import { HiOutlineLogout } from 'react-icons/hi'
 
 
 const accountLinks = [
   { title: "Account", to: "/account", text: "Profile" },
-    { to: "/", text: "Preference's" },
+  { to: "/", text: "Preference's" },
   { to: "/", text: "Notification's" },
   { title: "Subscription", to: "/", text: "Manage" },
   { title: "Auxiliership", to: "/", text: "Manage" },
@@ -21,6 +22,8 @@ const accountLinks = [
 ]
 
 const Account = () => {
+  const { isSidebarVisible, toggleSidebar } = useSidebar()
+
   return (
     <>
     <Layout>
@@ -30,9 +33,15 @@ const Account = () => {
         <Route path={deletePath} element={<Delete />} />
       </Routes>
       </MainContent>
-      <SidebarWrapper>
-        <Sidebar links={accountLinks} />
-      </SidebarWrapper>
+
+      <Sidebar
+          links={accountLinks}
+          isSidebarVisible={isSidebarVisible}
+          toggleSidebar={toggleSidebar}
+        />
+
+      {!isSidebarVisible && <ToggleButton toggleSidebar={toggleSidebar} />}
+
     </Layout>
     </>
   )

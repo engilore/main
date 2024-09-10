@@ -1,4 +1,4 @@
-import { useAuth } from '../../../../../Auth/contexts'
+import { useAuth } from '../../../../../../contexts/authContexts'
 
 import {
   Section,

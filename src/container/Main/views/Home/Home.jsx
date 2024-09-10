@@ -2,7 +2,6 @@ import {
   HeroSection,
   SpotlightPostSection,
   FeaturedPostsSection,
-  SubscribeSection
 } from './sect/index'
 
 
@@ -12,7 +11,6 @@ return (
   <HeroSection />
   <SpotlightPostSection />
   <FeaturedPostsSection />
-  <SubscribeSection />
   </>
 )
 }

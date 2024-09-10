@@ -9,7 +9,8 @@ const rotate = keyframes`
 
 export const LoaderWrapper = styled.div`
   background-color: var(--bg-secondary);
-  height: 70vh;
+  height: 100vh;
+  max-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

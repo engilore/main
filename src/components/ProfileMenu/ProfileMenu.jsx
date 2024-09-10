@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useAuth } from '../../container/Auth/contexts'
+import { useAuth } from '../../contexts/authContexts'
 import { useLocation } from 'react-router-dom'
 
 import {
@@ -48,7 +48,6 @@ const ProfileMenu = () => {
             <ProfileDropdownLink to='/hub'>Hub</ProfileDropdownLink>
           )}
           <ProfileDropdownLink to='/profile'>Profile</ProfileDropdownLink>
-
           <ProfileDropdownLink to='/account'>Account</ProfileDropdownLink>
 
           <ProfileDropdownLink to='/auth/logout/'>

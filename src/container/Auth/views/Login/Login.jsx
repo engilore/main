@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../contexts'
+import { useAuth } from '../../../../contexts/authContexts'
 import ErrorMessage from '../../../../components/ErrorMessage/index'
 import Form from '../../../../components/Form/index'
 

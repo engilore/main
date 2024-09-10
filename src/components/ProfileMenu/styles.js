@@ -38,7 +38,7 @@ export const ProfileDropdown = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px 0;
-  z-index: 1000;
+  z-index: 1500;
 `
 
 export const ProfileDropdownLink = styled(Link)`

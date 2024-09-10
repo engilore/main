@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAuth } from '../../../Auth/contexts'
+import { useAuth } from '../../../../contexts/authContexts'
 import { deleteUser } from './services'
 import Form from '../../../../components/Form/index'
 import ErrorMessage from '../../../../components/ErrorMessage/index'

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useAuth } from '../../container/Auth/contexts'
+import { useAuth } from '../../contexts/authContexts'
 import Button from '../Button/index'
 import ProfileMenu from '../ProfileMenu/index'
 
@@ -22,19 +22,37 @@ import logo from '../../assets/logo.svg'
 const Navbar = () => {
   const { user } = useAuth()
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isProfileMenuOpen, setProfileMenuOpen] = useState(false)
 
-  const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen)
-  const closeMobileMenu = () => window.innerWidth > 768 && setMobileMenuOpen(false)
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen)
+    setProfileMenuOpen(false)
+  }
+
+  const toggleProfileMenu = () => {
+    setProfileMenuOpen(!isProfileMenuOpen)
+    setMobileMenuOpen(false)
+  }
+
+  const closeMenusOnResize = () => {
+    if (window.innerWidth > 768) {
+      setMobileMenuOpen(false)
+      setProfileMenuOpen(false)
+    }
+  }
 
   useEffect(() => {
-    window.addEventListener('resize', closeMobileMenu)
-    return () => window.removeEventListener('resize', closeMobileMenu)
+    window.addEventListener('resize', closeMenusOnResize)
+    return () => window.removeEventListener('resize', closeMenusOnResize)
   }, [])
 
   return (
     <Nav>
       <Contain>
-        <Brand to="/" onClick={() => setMobileMenuOpen(false)}>
+        <Brand to="/" onClick={() => {
+          setMobileMenuOpen(false)
+          setProfileMenuOpen(false)
+        }}>
           <Logo src={logo} alt="Engilore Logo" />
           <Name>Engilore</Name>
         </Brand>
@@ -47,7 +65,7 @@ const Navbar = () => {
           </NavLinks>
 
           {user ? (
-            <ProfileMenu />
+            <ProfileMenu isProfileMenuOpen={isProfileMenuOpen} toggleProfileMenu={toggleProfileMenu} />
           ) : (
             <Button
               text="Sign In"

@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom'
-import { useAuth } from '../container/Auth/contexts'
+import { useAuth } from '../contexts/authContexts'
 import Loading from '../components/Loading/index'
 
 

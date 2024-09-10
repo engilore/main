@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../contexts'
+import { useAuth } from '../../../../contexts/authContexts'
 import Loading from '../../../../components/Loading'
 
 
