@@ -1,72 +1,72 @@
+import React, { useState, useEffect } from 'react'
+import { fetchPosts } from '../../services/postService'
 import Tag from '../../../../components/Tag/index'
 
 import {
-    PostContainer,
-    Title,
-    PostMeta,
-    PostType,
-    PostDate,
-    TagPills,
+  PostContainer,
+  Title,
+  PostMeta,
+  PostType,
+  PostDate,
+  TagPills,
+  Author,
 } from './styles'
 
-
-const posts = [
-  {
-    title: "Post One Title",
-    types: ["Analysis", "Research"],
-    date: "August 29, 2024",
-    content: "Short content summary for post one...",
-    tags: ["Philosophy", "Science"]
-  },
-  {
-    title: "Post Two Title",
-    types: ["Poem"],
-    date: "August 29, 2024",
-    content: "Short content summary for post one...",
-    tags: ["Philosophy", "Science", "Photonics"]
-  },
-  {
-    title: "Post Three Title",
-    types: ["Memoir", "Treatise"],
-    date: "August 28, 2024",
-    content: "Short content summary for post two...",
-    tags: ["Education"]
-  },
-  {
-    title: "Post Four Title",
-    types: ["Story"],
-    date: "August 27, 2024",
-    content: "Short content summary for post three...",
-    tags: ["Literature", "Culture"]
-  }
-]
-
 const Post = ({ count = 4 }) => {
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedPosts = await fetchPosts()
+        setPosts(fetchedPosts.data)
+        setLoading(false)
+      } catch (error) {
+        console.error('Error fetching posts:', error)
+        setLoading(false)
+      }
+    }
+    
+    fetchData()
+  }, [])
+
+  if (loading) {
+    return <div>Loading...</div> 
+  }
+
   return (
     <>
       {posts.slice(0, count).map((post, index) => (
         <PostContainer key={index}>
-          <Title>{post.title}</Title>
-          <PostMeta>
-            <PostType>
-              {post.types.map((type, index) => (
+          <PostType>
+            {Array.isArray(post.type) ? (
+              post.type.map((type, index) => (
                 <span key={index}>{type}</span>
-              ))}
-            </PostType>
-            <PostDate>{post.date}</PostDate>
+              ))
+            ) : (
+              <span>{post.type}</span>
+            )}
+          </PostType>
+          <Title>{post.title}</Title>
+          <Author>- {post.author.first_name} {post.author.last_name}</Author>
+          <PostMeta>
+            <PostDate>{new Date(post.published_at).toLocaleDateString()}</PostDate>
           </PostMeta>
-          <TagPills>
-            {post.tags.map(tag => (
+          {post.topics && post.topics.length > 0 && (
+            <TagPills>
+              {post.topics.map(tag => (
                 <Tag
                   key={tag}
                   text={tag}
                   textColor="var(--clr-secondary)"
                   bgColor="var(--bg-light)"
-                  outlined={true}     
+                  outlined={true}
                   borderColor="var(--bg-light)"
                 />
-            ))}
-          </TagPills>
+              ))}
+            </TagPills>
+          )}
         </PostContainer>
       ))}
     </>

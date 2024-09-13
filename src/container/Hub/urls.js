@@ -1,4 +1,14 @@
 
+export const accountUrl = 'account/'
+
+export const userUrl = `${accountUrl}users/`
+export const userListUrl = userUrl
+export const userDetailUrl = (id) => `${userUrl}${id}/`
+export const userUpdateUrl = (id) => `${userUrl}${id}/update/`
+export const userDeleteUrl = (id) => `${userUrl}${id}/delete/`
+export const userAssignRoleUrl = (id) => `${userUrl}${id}/assign-role/`
+export const userRevokeRoleUrl = (id) => `${userUrl}${id}/revoke-role/`
+
 export const categoryUrl = 'category/'
 export const categoryCreateUrl = `${categoryUrl}create/`
 export const categoryDetailUrl = (id) => `${categoryUrl}${id}/`

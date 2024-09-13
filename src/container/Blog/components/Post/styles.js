@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 
 export const Title = styled.h1`
@@ -12,6 +12,16 @@ export const Title = styled.h1`
   @media (max-width: 768px) {
     font-size: var(--fs-xl);
   }
+`
+
+export const Author = styled.span`
+  color: var(--clr-secondary);
+  font-family: var(--fnt-secondary);
+  font-weight: var(--fw-normal);
+  font-size: var(--fs-md);
+  font-style: italic;
+  margin-bottom: 10px;
+  display: block;
 `
 
 export const PostContainer = styled(Link)`
@@ -55,10 +65,13 @@ export const PostMeta = styled.div`
 
 export const PostType = styled.span`
   color: var(--clr-secondary);
-  margin-right: 10px;
+  font-family: var(--fnt-secondary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
-  
+
   & > span:not(:last-child)::after {
     content: ', ';
     margin-right: 5px;
@@ -67,7 +80,10 @@ export const PostType = styled.span`
 
 export const PostDate = styled.span`
   color: var(--clr-primary);
+  font-family: var(--fnt-primary);
   font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
   margin-left: auto;
   white-space: nowrap;
   display: flex;
