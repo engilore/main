@@ -1,5 +1,7 @@
-import { Link } from 'react-router-dom';
-import { BaseButton, ButtonIcon } from './styles';
+import { Link } from 'react-router-dom'
+import ProtectedComponent from '../../utils/protectedComponent'
+import { BaseButton, ButtonIcon } from './styles'
+
 
 const Button = ({
   text,
@@ -14,6 +16,7 @@ const Button = ({
   href,
   to,
   onClick,
+  allowedRoles = [],
   ...rest
 }) => {
   const buttonProps = {
@@ -23,50 +26,58 @@ const Button = ({
     $textColor: textColor,
     $hoverColor: hoverColor,
     $iconRight: iconRight,
-  };
+  }
+
+  const buttonContent = (
+    <>
+      {!iconRight && icon && <ButtonIcon>{icon}</ButtonIcon>}
+      {text}
+      {iconRight && icon && <ButtonIcon $iconRight>{icon}</ButtonIcon>}
+    </>
+  )
 
   if (to) {
     return (
-      <BaseButton
-        as={Link}
-        to={to}
-        {...buttonProps}
-        {...rest}
-      >
-        {!iconRight && icon && <ButtonIcon>{icon}</ButtonIcon>}
-        {text}
-        {iconRight && icon && <ButtonIcon $iconRight>{icon}</ButtonIcon>}
-      </BaseButton>
-    );
+      <ProtectedComponent allowedRoles={allowedRoles}>
+        <BaseButton
+          as={Link}
+          to={to}
+          {...buttonProps}
+          {...rest}
+        >
+          {buttonContent}
+        </BaseButton>
+      </ProtectedComponent>
+    )
   }
 
   if (href) {
     return (
-      <BaseButton
-        as="a"
-        href={href}
-        {...buttonProps}
-        {...rest}
-      >
-        {!iconRight && icon && <ButtonIcon>{icon}</ButtonIcon>}
-        {text}
-        {iconRight && icon && <ButtonIcon $iconRight>{icon}</ButtonIcon>}
-      </BaseButton>
-    );
+      <ProtectedComponent allowedRoles={allowedRoles}>
+        <BaseButton
+          as="a"
+          href={href}
+          {...buttonProps}
+          {...rest}
+        >
+          {buttonContent}
+        </BaseButton>
+      </ProtectedComponent>
+    )
   }
 
   return (
-    <BaseButton
-      type={type}
-      onClick={onClick}
-      {...buttonProps}
-      {...rest}
-    >
-      {!iconRight && icon && <ButtonIcon>{icon}</ButtonIcon>}
-      {text}
-      {iconRight && icon && <ButtonIcon $iconRight>{icon}</ButtonIcon>}
-    </BaseButton>
-  );
-};
+    <ProtectedComponent allowedRoles={allowedRoles}>
+      <BaseButton
+        type={type}
+        onClick={onClick}
+        {...buttonProps}
+        {...rest}
+      >
+        {buttonContent}
+      </BaseButton>
+    </ProtectedComponent>
+  )
+}
 
-export default Button;
+export default Button

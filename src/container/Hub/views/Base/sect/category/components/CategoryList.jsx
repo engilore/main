@@ -33,6 +33,7 @@ const CategoryList = ({ categories, handleEdit, handleDelete }) => {
             onClick: () => handleDelete(category.id),
             icon: <FaTrash />,
             bgColor: '#BD1F36',
+            allowedRoles: ['admin']
           },
         ]
 

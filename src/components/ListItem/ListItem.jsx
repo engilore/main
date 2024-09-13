@@ -27,6 +27,7 @@ const ListItem = ({ fields, actions }) => (
           onClick={action.onClick}
           size="small"
           shape="rounded"
+          allowedRoles={action.allowedRoles || []}
         />
       ))}
     </ButtonContainer>
@@ -47,6 +48,7 @@ ListItem.propTypes = {
       icon: PropTypes.element,
       bgColor: PropTypes.string,
       hoverColor: PropTypes.string,
+      allowedRoles: PropTypes.arrayOf(PropTypes.string),
     })
   ).isRequired,
 }
