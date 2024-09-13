@@ -4,18 +4,19 @@ import ToggleButton from '../../../../components/Sidebar/SidebarToggle'
 import { SpotlightPostSection, FeaturedPostsSection } from './sect/index'
 
 import { Layout, MainContent } from './styles'
-import { FaScroll, FaForumbee, FaVideo, FaHandsHelping } from 'react-icons/fa'
-import { FaFireFlameSimple } from "react-icons/fa6"
-import { MdNaturePeople } from "react-icons/md"
-import { TbSwords } from "react-icons/tb"
+import { FaForumbee, FaHandsHelping } from 'react-icons/fa'
+import { LuScroll, LuVideo } from 'react-icons/lu'
+import { FaFireFlameSimple } from 'react-icons/fa6'
+import { MdNaturePeople } from 'react-icons/md'
+import { TbSwords } from 'react-icons/tb'
 
 
 const blogLinks = [
-  { to: "/guardians", icon: <MdNaturePeople />, text: "Guardians", bgColor: "var(--bg-primary)", hoverColor: "var(--bg-secondary)" },
+  { to: "/guardians", icon: <MdNaturePeople />, text: "Guardian's", bgColor: "var(--bg-primary)", hoverColor: "var(--bg-secondary)" },
   { to: "/dialogue", icon: <FaForumbee />, text: "Dialogue", bgColor: "var(--bg-dark)", hoverColor: "var(--bg-accent)" },
   { to: "/conquests", icon: <TbSwords />, text: "Conquest's", bgColor: "var(--bg-danger)", hoverColor: "var(--bg-light)" },
-  { to: "/posts", icon: <FaScroll />, text: "Posts", bgColor: "var(--bg-primary)", hoverColor: "var(--bg-secondary)" },
-  { to: "/videos", icon: <FaVideo />, text: "Videos", bgColor: "var(--bg-dark)", hoverColor: "var(--bg-accent)" },
+  { to: "/posts", icon: <LuScroll />, text: "Post's", bgColor: "var(--bg-primary)", hoverColor: "var(--bg-secondary)" },
+  { to: "/videos", icon: <LuVideo />, text: "Video's", bgColor: "var(--bg-dark)", hoverColor: "var(--bg-accent)" },
   { to: "/videos", icon: <FaHandsHelping />, text: "Benafaction", isDivider: true, variant: "special", textColor: "var(--clr-primary)", bgColor: "var(--bg-accent)"},
   { to: "/", icon: <FaFireFlameSimple />, text: "Auxiliership", variant: "special", bgColor: "var(--bg-primary)"},
 ]

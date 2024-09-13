@@ -9,11 +9,9 @@ const SidebarContent = ({ links }) => (
   <Contain>
     <Content>
       <Items>
-        {links.map(({ title, to, icon, text, isDivider, variant, bgColor, textColor }, index) => (
+        {links.map(({ title, to, icon, text, isDivider, variant, bgColor, textColor, allowedRoles }, index) => (
           <React.Fragment key={index}>
             {title && <Title>{title}</Title>}
-
-            {isDivider && <Divider key={`divider-${index}`} />}
 
             <ItemContainer>
               <SidebarLink
@@ -23,8 +21,12 @@ const SidebarContent = ({ links }) => (
                 variant={variant}
                 bgColor={bgColor}
                 textColor={textColor}
+                allowedRoles={allowedRoles}
               />
             </ItemContainer>
+
+            {isDivider && <Divider />}
+
           </React.Fragment>
         ))}
       </Items>
@@ -43,6 +45,7 @@ SidebarContent.propTypes = {
       variant: PropTypes.string,
       bgColor: PropTypes.string,
       textColor: PropTypes.string,
+      allowedRoles: PropTypes.arrayOf(PropTypes.string),
     })
   ).isRequired,
 }
