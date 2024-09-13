@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAuth } from '../../../../contexts/authContexts'
-import { deleteUser } from './services'
+import { deleteUser } from '../../services/deleteUserService'
 import Form from '../../../../components/Form/index'
 import ErrorMessage from '../../../../components/ErrorMessage/index'
 import SuccessMessage from '../../../../components/SuccessMessage/index'

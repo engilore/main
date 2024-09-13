@@ -1,10 +1,10 @@
-import { baseUrl } from '../../../../services/api'
-import { authUrl, loginUrl } from '../../urls'
+import { baseUrl } from '../../../services/api'
+import { authUrl, loginUrl } from '../urls'
 
-
-const apiUrl = `${baseUrl}${authUrl}${loginUrl}`
 
 export const loginUser = async (email, password) => {
+  const apiUrl = `${baseUrl}${authUrl}${loginUrl}`
+
   const response = await fetch(apiUrl, {
     method: 'POST',
     headers: {

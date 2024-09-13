@@ -18,7 +18,7 @@ const CategoryList = ({ categories, handleEdit, handleDelete }) => {
           { label: 'Meta Description', value: category.meta_description || 'No meta description' },
           { label: 'Slug', value: category.slug || 'No slug' },
           { label: 'Created At', value: new Date(category.created_at).toLocaleDateString() },
-          { label: 'Created By', value: category.created_by },
+          { label: 'Created By', value: category.created_by || 'Unknown' },
         ]
 
         const actions = [

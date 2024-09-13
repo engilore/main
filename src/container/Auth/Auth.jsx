@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { registerPath, loginPath, logoutPath } from './paths'
-import GuestRoute from './utils'
+import GuestRoute from '../../utils/guestRoute'
 
 import { Register, Login, Logout } from './views/index'
   
