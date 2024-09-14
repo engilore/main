@@ -16,8 +16,8 @@ const blogLinks = [
   { to: "/dialogue", icon: <FaForumbee />, text: "Dialogue", bgColor: "var(--bg-dark)", hoverColor: "var(--bg-accent)" },
   { to: "/conquests", icon: <TbSwords />, text: "Conquest's", bgColor: "var(--bg-danger)", hoverColor: "var(--bg-light)" },
   { to: "/posts", icon: <LuScroll />, text: "Post's", bgColor: "var(--bg-primary)", hoverColor: "var(--bg-secondary)" },
-  { to: "/videos", icon: <LuVideo />, text: "Video's", bgColor: "var(--bg-dark)", hoverColor: "var(--bg-accent)" },
-  { to: "/videos", icon: <FaHandsHelping />, text: "Benafaction", isDivider: true, variant: "special", textColor: "var(--clr-primary)", bgColor: "var(--bg-accent)"},
+  { to: "/videos", icon: <LuVideo />, text: "Video's", bgColor: "var(--bg-dark)", isDivider: true, hoverColor: "var(--bg-accent)" },
+  { to: "/videos", icon: <FaHandsHelping />, text: "Benafaction", variant: "special", textColor: "var(--clr-primary)", bgColor: "var(--bg-accent)"},
   { to: "/", icon: <FaFireFlameSimple />, text: "Auxiliership", variant: "special", bgColor: "var(--bg-primary)"},
 ]
 

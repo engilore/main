@@ -33,6 +33,7 @@ const TopicList = ({ topics, handleEdit, handleDelete }) => {
             onClick: () => handleDelete(topic.id),
             icon: <FaTrash />,
             bgColor: '#BD1F36',
+            allowedRoles: ['admin']
           },
         ]
 

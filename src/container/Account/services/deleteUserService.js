@@ -1,6 +1,6 @@
-import { baseUrl } from '../../../../services/api'
-import { authUrl } from '../../../Auth/urls'
-import { deleteUrl } from '../../urls'
+import { baseUrl } from '../../../services/api'
+import { authUrl } from '../../Auth/urls'
+import { deleteUrl } from '../urls'
 
 
 export const deleteUser = async (token, password) => {

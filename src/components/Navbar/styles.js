@@ -25,6 +25,7 @@ export const Nav = styled.nav`
     position: relative;
 `
 
+
 export const Contain = styled.div`
     display: flex;
     justify-content: space-between;

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import { AuthProvider } from './contexts/authContexts'
+import { AuthProvider } from './contexts/authProvider'
 import { SidebarProvider } from './contexts/sidebarContexts'
 
 import App from './App'

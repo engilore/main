@@ -16,8 +16,8 @@ const accountLinks = [
   { to: "/", text: "Notification's" },
   { title: "Subscription", to: "/", text: "Manage" },
   { title: "Auxiliership", to: "/", text: "Manage" },
-  { to: "/", text: "Join",},
-  { to: "/auth/logout", icon: <HiOutlineLogout />, text: "Sign Out", variant: "special", isDivider: true, textColor: "var(--clr-primary)", bgColor: "transparent"},
+  { to: "/", text: "Join", isDivider: true,},
+  { to: "/auth/logout", icon: <HiOutlineLogout />, text: "Sign Out", variant: "special", textColor: "var(--clr-primary)", bgColor: "transparent"},
   { to: "/account/delete", icon: <MdDeleteOutline />, text: "Delete", variant: "special", textColor: "var(--clr-danger)", bgColor: "var(--bg-danger)"},
 ]
 

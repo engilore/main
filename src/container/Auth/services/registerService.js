@@ -1,5 +1,5 @@
-import { baseUrl } from '../../../../services/api'
-import { authUrl, registerUrl } from '../../urls'
+import { baseUrl } from '../../../services/api'
+import { authUrl, registerUrl } from '../urls'
 
 
 export const registerUser = async (formData) => {

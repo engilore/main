@@ -6,6 +6,11 @@ export const Foot = styled.footer`
   background-color: var(--bg-white);
   color: var(--clr-primary);
   padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
 `
 
 export const Contain = styled.div`
