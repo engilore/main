@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom'
-import { basePath } from './paths'
+import { createPath } from './paths'
 
-import Base from './views/index'
+import Create from './views/index'
 
 
 const Post = () => {
   return (
     <>
     <Routes>
-      <Route path={basePath + "*"} element={<Base />} />
+      <Route path={createPath + "*"} element={<Create />} />
     </Routes>
     </>
   )
