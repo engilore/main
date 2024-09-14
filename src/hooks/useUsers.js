@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { fetchUsers, updateUser, deleteUser, assignRoleToUser, revokeRoleFromUser } from '../../../../services/manageService'
+import { fetchUsers, updateUser, deleteUser, assignRoleToUser, revokeRoleFromUser } from '../services/hub/manageUserService'
 
 
 export const useUsers = (token) => {

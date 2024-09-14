@@ -1,6 +1,6 @@
 import ListItem from '../../components/ListItem/index'
 
-import { ListWrapper, ListHeader, Content, Container } from './styles'
+import { ListWrapper, ListHeader, Content, Container, NoPostsMessage } from './styles'
 
 
 const PostList = ({ posts, title, isDraft, handleView }) => (
@@ -27,7 +27,7 @@ const PostList = ({ posts, title, isDraft, handleView }) => (
             />
           ))
         ) : (
-          <p>No {isDraft ? 'drafts' : 'published posts'} found.</p>
+          <NoPostsMessage>No {isDraft ? 'drafts' : 'published posts'} found.</NoPostsMessage>
         )}
       </Content>
     </ListWrapper>

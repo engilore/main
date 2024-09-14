@@ -1,29 +1,33 @@
 import { useState, useEffect } from 'react'
-import { fetchPosts } from '../../../../services/postService'
-import { fetchDraftPosts } from '../../../../services/postDraftService'
+import { fetchUserPosts } from '../../services/blog/postService'
+import { fetchDraftPosts } from '../../services/blog/postDraftService'
 
-const useFetchPosts = () => {
+
+const useUserPosts = () => {
   const [publishedPosts, setPublishedPosts] = useState([])
   const [draftPosts, setDraftPosts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null) 
 
   useEffect(() => {
     const loadPosts = async () => {
       try {
         const token = localStorage.getItem('authToken')
         if (!token) {
-          console.error('Auth token is missing')
+          setError('Auth token is missing')
+          setLoading(false)
           return
         }
 
         const [publishedResponse, draftResponse] = await Promise.all([
-          fetchPosts(token),
+          fetchUserPosts(token),
           fetchDraftPosts(token),
         ])
 
         setPublishedPosts(publishedResponse.data)
         setDraftPosts(draftResponse.data)
       } catch (error) {
+        setError('Failed to fetch posts.')
         console.error('Failed to fetch posts:', error)
       } finally {
         setLoading(false)
@@ -33,7 +37,7 @@ const useFetchPosts = () => {
     loadPosts()
   }, [])
 
-  return { publishedPosts, draftPosts, loading }
+  return { publishedPosts, draftPosts, loading, error }
 }
 
-export default useFetchPosts
+export default useUserPosts

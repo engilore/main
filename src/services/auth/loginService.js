@@ -1,5 +1,5 @@
-import { baseUrl } from '../../../services/api'
-import { authUrl, loginUrl } from '../urls'
+import { baseUrl } from '../api'
+import { authUrl, loginUrl } from '../../container/Auth/urls'
 
 
 export const loginUser = async (email, password) => {

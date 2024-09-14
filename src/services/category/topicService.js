@@ -1,7 +1,7 @@
-import { baseUrl } from '../../../services/api'
+import { baseUrl } from '../api'
 import {
     topicUrl, topicCreateUrl, topicDetailUrl, topicUpdateUrl, topicDeleteUrl
-} from '../urls'
+} from '../../container/Hub/urls'
 
 
 export const fetchTopics = async () => {

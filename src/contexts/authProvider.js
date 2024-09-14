@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { validateUser, loginUser, registerUser, logoutUser } from '../container/Auth/services/index'
+import { validateUser, loginUser, registerUser, logoutUser } from '../services/auth/index'
 import AuthContext from './authContexts'
 import Loading from '../components/Loading/index'
 

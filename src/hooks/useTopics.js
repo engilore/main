@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { fetchTopics, createTopic, updateTopic, deleteTopic } from '../../../../services/topicService'
+import { fetchTopics, createTopic, updateTopic, deleteTopic } from '../services/category/topicService'
 
 
 export const useTopics = (token) => {
@@ -13,11 +13,15 @@ export const useTopics = (token) => {
   }, [])
 
   const loadTopics = async () => {
+    setIsLoading(true)
+    setError(null)
     try {
       const fetchedTopics = await fetchTopics()
       setTopics(fetchedTopics)
     } catch (error) {
       setError('Error fetching topics.')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -31,7 +35,7 @@ export const useTopics = (token) => {
         await updateTopic(token, formState.id, formState)
         setSuccess('Topic updated successfully.')
       } else {
-        await createTopic(token, formState) 
+        await createTopic(token, formState)
         setSuccess('Topic created successfully.')
       }
       loadTopics()
@@ -45,13 +49,18 @@ export const useTopics = (token) => {
   const handleDeleteTopic = async (id) => {
     setError(null)
     setSuccess(null)
+    setIsLoading(true)
 
     try {
       await deleteTopic(token, id)
-      setTopics((prevTopics) => prevTopics.filter((topic) => topic.id !== id))
+      setTopics((prevTopics) =>
+        prevTopics.filter((topic) => topic.id !== id)
+      )
       setSuccess('Topic deleted successfully.')
     } catch (error) {
       setError('Failed to delete topic.')
+    } finally {
+      setIsLoading(false)
     }
   }
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { fetchCategories, createCategory, updateCategory, deleteCategory } from '../../../../services/categoryService'
+import { fetchCategories, createCategory, updateCategory, deleteCategory } from '../services/category/categoryService'
 
 
 export const useCategories = (token) => {
@@ -13,11 +13,15 @@ export const useCategories = (token) => {
   }, [])
 
   const loadCategories = async () => {
+    setIsLoading(true)
+    setError(null)
     try {
       const fetchedCategories = await fetchCategories()
       setCategories(fetchedCategories)
     } catch (error) {
       setError('Error fetching categories.')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -25,7 +29,7 @@ export const useCategories = (token) => {
     setIsLoading(true)
     setError(null)
     setSuccess(null)
-    
+
     try {
       if (isEditing) {
         await updateCategory(token, formState.id, formState)
@@ -43,6 +47,7 @@ export const useCategories = (token) => {
   }
 
   const handleDeleteCategory = async (id) => {
+    setIsLoading(true)
     setError(null)
     setSuccess(null)
 
@@ -54,6 +59,8 @@ export const useCategories = (token) => {
       setSuccess('Category deleted successfully.')
     } catch (error) {
       setError('Failed to delete category.')
+    } finally {
+      setIsLoading(false)
     }
   }
 

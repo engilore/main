@@ -23,7 +23,6 @@ const PostDetail = ({ post, isDraft }) => {
       
       <PostTitle>{postData.title || 'Untitled Post'}</PostTitle>
 
-      {/* Meta fields side by side */}
       <MetaWrapper>
         <PostMeta>
           {isDraft 

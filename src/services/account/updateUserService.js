@@ -1,6 +1,6 @@
-import { baseUrl } from '../../../services/api'
-import { authUrl } from '../../Auth/urls'
-import { updateUrl } from '../../Account/urls'
+import { baseUrl } from '../api'
+import { authUrl } from '../../container/Auth/urls'
+import { updateUrl } from '../../container/Account/urls'
 
 
 export const updateUser = async (token, formData) => {

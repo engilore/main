@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
-import useFetchPosts from './hooks'
+import useUserPosts from '../../../../../../hooks/useBlog/useUserPosts'
 import PostList from '../../../../../../components/PostList/index'
 
 import { Section, Contain, Content } from './heroStyle'
 
 
 const Hero = () => {
-  const { publishedPosts, draftPosts, loading } = useFetchPosts()
+  const { publishedPosts, draftPosts, loading, error } = useUserPosts()
   const navigate = useNavigate()
 
   const handleView = (postId, isDraftPost) => {
@@ -18,6 +18,7 @@ const Hero = () => {
   }
 
   if (loading) return <p>Loading...</p>
+  if (error) return <p>{error}</p>
 
   return (
     <Section>

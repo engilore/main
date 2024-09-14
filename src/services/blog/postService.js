@@ -1,7 +1,7 @@
-import { baseUrl } from '../../../services/api'
+import { baseUrl } from '../api'
 import {
-    postUrl, postCreateUrl, postDetailUrl, postUpdateUrl, postDeleteUrl
-} from '../urls'
+    postUrl, postCreateUrl, postDetailUrl, postUpdateUrl, postDeleteUrl, userPostUrl
+} from '../../container/Post/urls'
 
 
 export const fetchPosts = async () => {
@@ -25,6 +25,24 @@ export const fetchPosts = async () => {
     console.error('Error fetching posts:', error.message)
     throw error
   }
+}
+
+export const fetchUserPosts = async (token) => {
+  const apiUrl = `${baseUrl}${userPostUrl}`
+
+  const response = await fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Token ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch user posts: ${response.status}`)
+  }
+
+  return await response.json()
 }
 
 export const fetchPostById = async (id) => {

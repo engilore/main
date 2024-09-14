@@ -1,7 +1,7 @@
-import { baseUrl } from '../../../services/api'
+import { baseUrl } from '../api'
 import {
     postDraftUrl, postDraftDetailUrl, postDraftUpdateUrl, postDraftDeleteUrl
-} from '../urls'
+} from '../../container/Post/urls'
 
 
 export const fetchDraftPosts = async (token) => {
