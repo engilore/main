@@ -19,16 +19,16 @@ const ListItem = ({ fields, actions }) => (
     <ButtonContainer>
       {actions.map((action, index) => (
         <Button
-          key={index}
-          text={action.label}
-          icon={action.icon}
-          bgColor={action.bgColor || '#007bff'}
-          hoverColor={action.hoverColor || 'none'}
-          onClick={action.onClick}
-          size="small"
-          shape="rounded"
-          allowedRoles={action.allowedRoles || []}
-        />
+        key={index}
+        text={action.label}
+        icon={action.icon}
+        bgColor={action.bgColor || '#007bff'}
+        hoverColor={action.hoverColor || 'none'}
+        onClick={action.onClick}
+        size="small"
+        shape="rounded"
+        allowedRoles={action.allowedRoles || []}
+      />
       ))}
     </ButtonContainer>
   </ListItemWrapper>

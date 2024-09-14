@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
 import ProtectedRoute from './utils/projectedRoute'
-import { hubPath, accountPath, profilePath, mainPath, authPath, blogPath } from './container/paths'
+import { hubPath, accountPath, profilePath, mainPath, authPath, blogPath, postPath } from './container/paths'
 
 import Navbar from './components/Navbar/index'
 import Footer from './components/Footer/index'
-import { Hub, Account, Profile, Main, Blog, Auth } from './container/index'
+import { Hub, Account, Profile, Main, Blog, Post, Auth } from './container/index'
 
 
 function App() {
@@ -20,7 +20,15 @@ function App() {
                 <Hub />
               </ProtectedRoute>
             } 
-          />
+        />
+        <Route 
+            path={postPath + "/*"} 
+            element={
+              <ProtectedRoute allowedRoles={['guardian', 'admin']}>
+                <Post />
+              </ProtectedRoute>
+            } 
+        />
         <Route 
           path={accountPath + "/*"} 
           element={

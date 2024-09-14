@@ -1,31 +1,25 @@
 import { baseUrl } from '../../../services/api'
 import {
-    postDraftUrl, postDraftCreateUrl, postDraftDetailUrl, postDraftUpdateUrl, postDraftDeleteUrl
+    postDraftUrl, postDraftDetailUrl, postDraftUpdateUrl, postDraftDeleteUrl
 } from '../urls'
 
 
 export const fetchDraftPosts = async (token) => {
   const apiUrl = `${baseUrl}${postDraftUrl}`
+  
+  const response = await fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Token ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })
 
-  try {
-    const response = await fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Token ${token}`,
-        'Content-Type': 'application/json',
-      },
-    })
-
-    if (!response.ok) {
-      const errMessage = await response.text()
-      throw new Error(`Failed to fetch draft posts: ${response.status} ${errMessage}`)
-    }
-
-    return await response.json()
-  } catch (error) {
-    console.error('Error fetching draft posts:', error.message)
-    throw error
+  if (!response.ok) {
+    throw new Error(`Failed to fetch draft posts: ${response.status}`)
   }
+
+  return await response.json()
 }
 
 export const fetchDraftPostById = async (token, id) => {
@@ -52,30 +46,7 @@ export const fetchDraftPostById = async (token, id) => {
   }
 }
 
-export const createDraftPost = async (token, draftPostData) => {
-  const apiUrl = `${baseUrl}${postDraftCreateUrl}`
 
-  try {
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Token ${token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(draftPostData),
-    })
-
-    if (!response.ok) {
-      const errMessage = await response.text()
-      throw new Error(`Failed to create draft post: ${response.status} ${errMessage}`)
-    }
-
-    return await response.json()
-  } catch (error) {
-    console.error('Error creating draft post:', error.message)
-    throw error
-  }
-}
 
 export const updateDraftPost = async (token, id, updatedDraftPostData) => {
   const apiUrl = `${baseUrl}${postDraftUpdateUrl(id)}`
