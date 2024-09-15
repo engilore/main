@@ -8,7 +8,7 @@ const Post = () => {
   return (
     <>
     <Routes>
-      <Route path={createPath + "*"} element={<Create />} />
+      <Route path={createPath} element={<Create />} />
     </Routes>
     </>
   )

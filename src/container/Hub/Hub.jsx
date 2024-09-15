@@ -16,10 +16,10 @@ import { RiSwordFill } from 'react-icons/ri'
 
 
 const blogLinks = [
-  { to: "/post", icon: <FaUserFriends />, text: "Comrade's", bgColor: "var(--bg-primary)", hoverColor: "var(--bg-secondary)" },
+  { to: "/post/create", icon: <FaUserFriends />, text: "Comrade's", bgColor: "var(--bg-primary)", hoverColor: "var(--bg-secondary)" },
   { to: "/conquests", icon: <RiSwordFill />, text: "Conquest's", bgColor: "var(--bg-danger)", hoverColor: "var(--bg-light)" },
   { to: "/hub/users", icon: <FaUserPen />, text: "Manage User's", isDivider: true, bgColor: "var(--bg-danger)", hoverColor: "var(--bg-light)", allowedRoles: ['admin'] },
-  { to: "/videos", icon: <RiQuillPenLine />, text: "Create Post", variant: "special", textColor: "var(--clr-primary)", bgColor: "var(--bg-light)"},
+  { to: "/post/create", icon: <RiQuillPenLine />, text: "Create Post", variant: "special", textColor: "var(--clr-primary)", bgColor: "var(--bg-light)"},
   { to: "/videos", icon: <RiSwordFill />, text: "Initiate Conquest", variant: "special", textColor: "var(--clr-white)", bgColor: "var(--bg-secondary)"},
 ]
 

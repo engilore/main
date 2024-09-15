@@ -21,14 +21,14 @@ const Tag = ({
     $hoverBgColor: hoverBgColor,
     $hoverTextColor: hoverTextColor,
     $outlined: outlined,
-  };
+  }
 
   if (to) {
     return (
       <Tagger as={Link} to={to} {...TagProps} {...rest}>
         {text}
       </Tagger>
-    );
+    )
   }
 
   if (href) {
@@ -36,10 +36,10 @@ const Tag = ({
       <Tagger as="a" href={href} {...TagProps} {...rest}>
         {text}
       </Tagger>
-    );
+    )
   }
 
-  return <Tagger {...TagProps} {...rest}>{text}</Tagger>;
-};
+  return <Tagger {...TagProps} {...rest}>{text}</Tagger>
+}
 
-export default Tag;
+export default Tag

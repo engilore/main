@@ -1,6 +1,6 @@
 import { baseUrl } from '../api'
 import {
-    postUrl, postCreateUrl, postDetailUrl, postUpdateUrl, postDeleteUrl, userPostUrl
+    postUrl, postTypesUrl, postCreateUrl, postDetailUrl, postUpdateUrl, postDeleteUrl, userPostUrl
 } from '../../container/Post/urls'
 
 
@@ -143,6 +143,30 @@ export const deletePost = async (token, id) => {
     return data
   } catch (error) {
     console.error('Delete Post Error:', error.message)
+    throw error
+  }
+}
+
+
+export const fetchPostTypes = async () => {
+  const apiUrl = `${baseUrl}${postTypesUrl}`
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (!response.ok) {
+      const errMessage = await response.text()
+      throw new Error(`Failed to fetch post types: ${response.status} ${errMessage}`)
+    }
+
+    return await response.json()
+  } catch (error) {
+    console.error('Error fetching post types:', error.message)
     throw error
   }
 }

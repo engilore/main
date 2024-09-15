@@ -1,5 +1,6 @@
 
 export const postUrl = 'blog/post/'
+export const postTypesUrl = `${postUrl}types/`
 export const postCreateUrl = `${postUrl}create/`
 export const postDetailUrl = (id) => `${postUrl}${id}/`
 export const postUpdateUrl = (id) => `${postUrl}${id}/edit/`

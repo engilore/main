@@ -13,13 +13,13 @@ export const Tagger = styled.span`
   cursor: pointer;
   text-decoration: none;
   color: ${({ $textColor }) => $textColor || 'var(--clr-white)'};
-  background-color: ${({ $outlined, $bgColor }) => $outlined ? 'transparent' : $bgColor || 'var(--bg-primary)'};
+  background-color: ${({ $outlined, $bgColor }) => $bgColor || ($outlined ? 'transparent' : 'var(--bg-primary)')};
   border: ${({ $outlined, $borderColor }) => $outlined ? `2px solid ${$borderColor || 'var(--clr-secondary)'}` : 'none'};
 
   &:hover {
-    background-color: ${({ $hoverBgColor, $outlined, $bgColor }) => $hoverBgColor || ($outlined ? 'transparent' : $bgColor)};
+    background-color: ${({ $hoverBgColor, $outlined, $bgColor }) => $hoverBgColor || $bgColor};
     color: ${({ $hoverTextColor, $textColor }) => $hoverTextColor || $textColor || 'var(--clr-white)'};
-    border-color: ${({ $hoverBorderColor, $outlined, $borderColor }) => $outlined && $hoverBorderColor ? $hoverBorderColor : $borderColor};
+    border-color: ${({ $hoverBorderColor, $outlined, $borderColor }) => $hoverBorderColor || ($outlined ? $borderColor : 'none')};
   }
 
   a {
