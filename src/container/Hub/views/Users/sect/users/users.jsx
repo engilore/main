@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAuth } from '../../../../../../contexts/authContexts'
-import { useUsers } from './hooks'
+import { useUsers } from '../../../../../../hooks/useUsers'
 import ErrorMessage from '../../../../../../components/ErrorMessage/index'
 import SuccessMessage from '../../../../../../components/SuccessMessage/index'
 import UserForm from './components/UserForm'

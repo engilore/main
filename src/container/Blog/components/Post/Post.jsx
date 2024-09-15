@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { fetchPosts } from '../../../Post/services/postService'
+import { fetchPosts } from '../../../../services/blog/postService'
 import Tag from '../../../../components/Tag/index'
 
 import {

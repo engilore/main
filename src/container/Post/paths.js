@@ -1,3 +1,2 @@
 
-export const basePath = "/"
-export const detailPostPath = "/:postId"
+export const createPath = "/create"

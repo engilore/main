@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuth } from '../../../../../../contexts/authContexts'
-import { fetchCategories } from '../../../../services/categoryService'
-import { useTopics } from './hooks'
-
+import { fetchCategories } from '../../../../../../services/category/categoryService'
+import { useTopics } from '../../../../../../hooks/useTopics'
 import { TopicForm, TopicList } from './components/index'
 import ErrorMessage from '../../../../../../components/ErrorMessage'
 import SuccessMessage from '../../../../../../components/SuccessMessage'
