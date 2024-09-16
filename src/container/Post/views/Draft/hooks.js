@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 
 
 export const usePostForm = (initialFormData, topics, loadTopics, fetchPostById, id, token) => {
@@ -68,6 +68,8 @@ export const useAutoSave = ({ formData, saveFunction, delay = 2000, token, id })
   const [success, setSuccess] = useState(null)
   const [error, setError] = useState(null)
 
+  const previousFormData = useRef(formData)
+
   const debouncedAutoSave = useCallback(() => {
     if (isAutoSaving) return
 
@@ -82,6 +84,7 @@ export const useAutoSave = ({ formData, saveFunction, delay = 2000, token, id })
       .then(() => {
         setIsAutoSaving(false)
         setSuccess('Draft autosaved successfully')
+        previousFormData.current = formData
       })
       .catch(() => {
         setIsAutoSaving(false)
@@ -92,13 +95,16 @@ export const useAutoSave = ({ formData, saveFunction, delay = 2000, token, id })
   useEffect(() => {
     if (!formData) return
 
-    const handler = setTimeout(() => {
-      debouncedAutoSave()
-    }, delay)
+    const hasChanges = JSON.stringify(formData) !== JSON.stringify(previousFormData.current)
 
-    return () => clearTimeout(handler)
+    if (hasChanges) {
+      const handler = setTimeout(() => {
+        debouncedAutoSave()
+      }, delay)
+
+      return () => clearTimeout(handler)
+    }
   }, [formData, debouncedAutoSave, delay])
 
   return { isAutoSaving, success, error }
 }
-
