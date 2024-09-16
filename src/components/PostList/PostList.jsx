@@ -13,6 +13,7 @@ import {
   HeaderInfo
 } from './styles'
 
+
 const PostList = ({ posts, title, isDraft, handleView }) => (
   <Container>
     <ListHeader>
@@ -34,8 +35,9 @@ const PostList = ({ posts, title, isDraft, handleView }) => (
               <Status>{isDraft ? 'draft' : post.status}</Status>
               <DateInfo>
                 {isDraft
-                  ? new Date(post.updated_at).toLocaleDateString()
-                  : new Date(post.published_at).toLocaleDateString()}
+                  ? new Date(post.updated_at).toLocaleString()
+                  : new Date(post.published_at).toLocaleString()
+                }
               </DateInfo>
             </PostItem>
           ))
