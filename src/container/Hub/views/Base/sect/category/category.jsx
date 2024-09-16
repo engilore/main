@@ -46,12 +46,11 @@ const Category = () => {
 
   return (
     <Section>
+      {error && <ErrorMessage message={error} />}
+      {success && <SuccessMessage message={success} />}
       <Contain>
         <FormContainer>
           <Header>Manage Categories</Header>
-
-          {error && <ErrorMessage message={error} />}
-          {success && <SuccessMessage message={success} />}
 
           <CategoryForm
             formState={formState}

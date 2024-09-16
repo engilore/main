@@ -27,6 +27,7 @@ export const fetchPosts = async () => {
   }
 }
 
+
 export const fetchUserPosts = async (token) => {
   const apiUrl = `${baseUrl}${userPostUrl}`
 

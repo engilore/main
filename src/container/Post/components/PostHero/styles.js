@@ -14,6 +14,12 @@ export const Contain = styled.div`
   margin: 0 auto;
   margin-top: 50px;
   margin-bottom: 50px;
+
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
 `
 
 export const Content = styled.div`
@@ -22,6 +28,10 @@ export const Content = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 40px 20px;
+
+  @media (max-width: 768px) {
+    padding: 20px 10px;
+  }
 `
 
 export const Label = styled.label`
@@ -30,6 +40,10 @@ export const Label = styled.label`
   font-size: var(--fs-2xl);
   font-weight: var(--fw-medium);
   margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: var(--fs-xl);
+  }
 `
 
 export const TextInput = styled.input`
@@ -55,6 +69,15 @@ export const TextInput = styled.input`
   &::placeholder {
     color: var(--clr-secondary);
     font-size: var(--fs-3xl);
+
+    @media (max-width: 768px) {
+      font-size: var(--fs-xl);
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: var(--fs-xl);
+    padding: 8px;
   }
 `
 
@@ -83,5 +106,15 @@ export const TextArea = styled.textarea`
   &::placeholder {
     color: var(--clr-secondary);
     font-size: var(--fs-lg);
+
+    @media (max-width: 768px) {
+      font-size: var(--fs-md);
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: var(--fs-md);
+    padding: 8px;
+    min-height: 120px;
   }
 `

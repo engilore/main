@@ -1,11 +1,12 @@
 import ListItem from '../../../../../../../components/ListItem/index'
 
+import { NoContent } from '../categoryStyle'
 import { FaPen, FaTrash } from 'react-icons/fa'
 
 
 const CategoryList = ({ categories, handleEdit, handleDelete }) => {
   if (categories.length === 0) {
-    return <p>No categories available.</p>
+    return <NoContent>No categories available.</NoContent>
   }
 
   return (

@@ -1,68 +1,46 @@
-import { useState, useEffect } from 'react'
 import useCreatePost from '../../../../hooks/useBlog/useCreatePost'
+import useTypesPost from '../../../../hooks/useBlog/useTypesPost'
 import { useCategories } from '../../../../hooks/useCategories'
 import { useTopics } from '../../../../hooks/useTopics'
-import useTypesPost from '../../../../hooks/useBlog/useTypesPost'
+import { usePostForm } from './hooks'
 
 import ErrorMessage from '../../../../components/ErrorMessage'
 import SuccessMessage from '../../../../components/SuccessMessage'
 import Loading from '../../../../components/Loading'
 import Button from '../../../../components/Button'
 
-import { PostHeroSection, PostContentSection, PostCategorySection, PostTypeSection } from './sect'
-import { Section, FlexContainer, FormWrapper } from './styles'
+import { PostHero, PostContent, PostCategory, PostType } from '../../components/index'
+
+import { Section, FlexContainer, FormWrapper, Navbar } from './styles'
+import { FaArrowLeft } from 'react-icons/fa'
 
 
 const CreatePost = () => {
-  const token = localStorage.getItem('authToken')
-  const { handleCreatePost, isLoading: postLoading, error, success } = useCreatePost(token)
-  const { categories, isLoading: categoryLoading } = useCategories(token)
-  const { topics, isLoading: topicLoading, loadTopics } = useTopics(token)
-  const { postTypes, isLoading: postTypesLoading } = useTypesPost()
+  const token = localStorage.getItem('authToken');
+  const { handleCreatePost, isLoading: postLoading, error, success } = useCreatePost(token);
+  const { categories, isLoading: categoryLoading } = useCategories(token);
+  const { topics, isLoading: topicLoading, loadTopics } = useTopics(token);
+  const { postTypes, isLoading: postTypesLoading } = useTypesPost();
 
-  const [formData, setFormData] = useState({
+  const { formData, handleInputChange, handleTopicChange } = usePostForm({
     title: '',
     summary: '',
     content: '',
     category: [],
     topics: [],
     type: '',
-    status: 'draft',
-  })
+  }, topics, loadTopics);
 
-  const isLoading = categoryLoading || topicLoading || postLoading || postTypesLoading
+  const isLoading = categoryLoading || topicLoading || postLoading || postTypesLoading;
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleTopicChange = (topicId) => {
-    const selectedTopic = topics.find(topic => topic.id === topicId)
-
-    setFormData((prev) => ({
-      ...prev,
-      topics: prev.topics.includes(selectedTopic.name)
-        ? prev.topics.filter((name) => name !== selectedTopic.name)
-        : [...prev.topics, selectedTopic.name],
-    }))
-  }
-
-  useEffect(() => {
-    if (formData.category.length > 0) {
-      loadTopics(formData.category[0])
-    }
-  }, [formData.category, loadTopics])
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    handleCreatePost({
+  const handleSubmit = (e, status) => {
+    e.preventDefault();
+    const postData = {
       ...formData,
-      category: formData.category,
-      topics: formData.topics,
-    })
-  }
+      status,
+    };
+    handleCreatePost(postData);
+  };
 
   return (
     <Section>
@@ -73,11 +51,41 @@ const CreatePost = () => {
         <Loading />
       ) : (
         <>
-          <PostHeroSection formData={formData} handleInputChange={handleInputChange} />
-          <FormWrapper onSubmit={handleSubmit}>
-            <PostContentSection formData={formData} handleInputChange={handleInputChange} />
+          <PostHero formData={formData} handleInputChange={handleInputChange} />
+
+          <Navbar>
+            <Button
+              text="Back to Hub"
+              size="large"
+              shape="rounded"
+              bgColor="var(--bg-light)"
+              textColor="var(--clr-primary)"
+              icon={<FaArrowLeft />}
+              to="/hub"
+            />
+            <Button
+              text="Save Draft"
+              size="large"
+              shape="rounded"
+              bgColor="var(--bg-light)"
+              textColor="var(--clr-primary)"
+              onClick={(e) => handleSubmit(e, 'draft')}
+              disabled={postLoading}
+            />
+            <Button
+              text="Publish"
+              size="large"
+              shape="rounded"
+              bgColor="var(--bg-primary)"
+              textColor="var(--clr-white)"
+              onClick={(e) => handleSubmit(e, 'published')}
+              disabled={postLoading}
+            />
+          </Navbar>
+
+          <FormWrapper>
             <FlexContainer>
-              <PostCategorySection
+              <PostCategory
                 formData={formData}
                 categories={categories}
                 topics={topics}
@@ -86,26 +94,19 @@ const CreatePost = () => {
                 handleTopicChange={handleTopicChange}
                 loadTopics={loadTopics}
               />
-              <PostTypeSection
+              <PostType
                 formData={formData}
                 postTypes={postTypes}
                 handleInputChange={handleInputChange}
               />
             </FlexContainer>
-            <Button
-              text={postLoading ? 'Creating...' : 'Create Post'}
-              size="base"
-              shape="rounded"
-              bgColor="var(--bg-primary)"
-              textColor="var(--clr-white)"
-              type="submit"
-              disabled={postLoading}
-            />
+
+            <PostContent formData={formData} handleInputChange={handleInputChange} />
           </FormWrapper>
         </>
       )}
     </Section>
-  )
-}
+  );
+};
 
-export default CreatePost
+export default CreatePost;

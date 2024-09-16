@@ -38,12 +38,12 @@ const User = () => {
 
   return (
     <Section>
+      {error && <ErrorMessage message={error} />}
+      {success && <SuccessMessage message={success} />}
+      
       <Contain>
         <FormContainer>
           <Header>Manage Users</Header>
-
-          {error && <ErrorMessage message={error} />}
-          {success && <SuccessMessage message={success} />}
 
           <UserForm formState={formState} isEditing={isEditing} isLoading={isLoading} handleSubmit={handleSubmit} />
         </FormContainer>

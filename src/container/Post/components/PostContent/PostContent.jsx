@@ -1,4 +1,4 @@
-import { Section, Contain, Content, TextArea } from './postContentStyle'
+import { Section, Contain, Content, TextArea } from './styles'
 
 
 const PostContent = ({ formData, handleInputChange }) => (
@@ -8,7 +8,7 @@ const PostContent = ({ formData, handleInputChange }) => (
         <TextArea
           id="content"
           name="content"
-          value={formData.content}
+          value={formData.content || ''} 
           onChange={handleInputChange}
           placeholder="Enter post content"
           required

@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { fetchPosts } from '../../../../services/blog/postService'
+import React from 'react'
+import { useFetchPosts } from '../../../../hooks/useBlog/useFetchPosts'
 import Tag from '../../../../components/Tag/index'
+import Load from '../../../../components/Load/index' 
+
 
 import {
   PostContainer,
@@ -13,31 +15,25 @@ import {
 } from './styles'
 
 const Post = ({ count = 4 }) => {
-  const [posts, setPosts] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const fetchedPosts = await fetchPosts()
-        setPosts(fetchedPosts.data)
-        setLoading(false)
-      } catch (error) {
-        console.error('Error fetching posts:', error)
-        setLoading(false)
-      }
-    }
-    
-    fetchData()
-  }, [])
+  const { posts, loading, error } = useFetchPosts(count)
 
   if (loading) {
-    return <div>Loading...</div> 
+    return <Load />
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div> 
+  }
+
+  const postData = posts?.data || []
+
+  if (!postData.length) {
+    return <div>No posts found.</div>
   }
 
   return (
     <>
-      {posts.slice(0, count).map((post, index) => (
+      {postData.map((post, index) => (
         <PostContainer key={index}>
           <PostType>
             {Array.isArray(post.type) ? (

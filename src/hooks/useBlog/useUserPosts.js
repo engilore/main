@@ -28,7 +28,7 @@ const useUserPosts = () => {
         setDraftPosts(draftResponse.data)
       } catch (error) {
         setError('Failed to fetch posts.')
-        console.error('Failed to fetch posts:', error)
+        console.error(error)
       } finally {
         setLoading(false)
       }

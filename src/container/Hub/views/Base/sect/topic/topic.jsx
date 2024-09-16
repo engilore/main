@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '../../../../../../contexts/authContexts'
 import { fetchCategories } from '../../../../../../services/category/categoryService'
 import { useTopics } from '../../../../../../hooks/useTopics'
+
 import { TopicForm, TopicList } from './components/index'
-import ErrorMessage from '../../../../../../components/ErrorMessage'
-import SuccessMessage from '../../../../../../components/SuccessMessage'
+import ErrorMessage from '../../../../../../components/ErrorMessage/index'
+import SuccessMessage from '../../../../../../components/SuccessMessage/index'
 
 import {
   Section,
@@ -19,15 +20,15 @@ const Topic = () => {
   const { token } = useAuth()
   const [formState, setFormState] = useState({
     name: '',
-    description: '', 
-    meta_title: '', 
-    meta_description: '', 
-    category: null, 
+    description: '',
+    meta_title: '',
+    meta_description: '',
+    category: null,
     id: null
   })
   const [isEditing, setIsEditing] = useState(false)
-  const [categories, setCategories] = useState([]) 
-  const { topics, error, success, isLoading, handleCreateOrUpdate, handleDeleteTopic } = useTopics(token)
+  const [categories, setCategories] = useState([])
+  const { topics, error, success, isLoading, loadTopics, handleCreateOrUpdate, handleDeleteTopic } = useTopics(token)
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -40,6 +41,14 @@ const Topic = () => {
     }
     loadCategories()
   }, [])
+  
+  useEffect(() => {
+    loadTopics()
+  }, [loadTopics])
+  
+  useEffect(() => {
+  }, [topics])
+  
 
   const handleEdit = (topic) => {
     setIsEditing(true)
@@ -55,28 +64,33 @@ const Topic = () => {
 
   const handleSubmit = (data) => {
     handleCreateOrUpdate({ ...formState, ...data }, isEditing)
-    setFormState({
-      name: '', 
-      description: '', 
-      meta_title: '', 
-      meta_description: '', 
-      category: null, 
-      id: null
-    })
-    setIsEditing(false)
+      .then(() => {
+        setFormState({
+          name: '',
+          description: '',
+          meta_title: '',
+          meta_description: '',
+          category: null,
+          id: null
+        })
+        setIsEditing(false)
+      })
+      .catch((error) => {
+        console.error('Error handling form submission:', error)
+      })
   }
 
   return (
     <Section>
+      {error && <ErrorMessage message={error} />}
+      {success && <SuccessMessage message={success} />}
+
       <Contain>
         <FormContainer>
           <Header>Manage Topics</Header>
-
-          {error && <ErrorMessage message={error} />}
-          {success && <SuccessMessage message={success} />}
-
           <TopicForm
             formState={formState}
+            setFormState={setFormState}
             categories={categories}
             isEditing={isEditing}
             isLoading={isLoading}

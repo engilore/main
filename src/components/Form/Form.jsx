@@ -7,38 +7,38 @@ import { Form, FieldContainer, Label } from './styles'
 
 
 const DynamicForm = ({ fields, onSubmit, isLoading, buttonText }) => {
-  const [formData, setFormData] = useState({});
-  const [initialData, setInitialData] = useState({});
-  const [passwordVisibility, setPasswordVisibility] = useState({});
-  const [isChanged, setIsChanged] = useState(false);
+  const [formData, setFormData] = useState({})
+  const [initialData, setInitialData] = useState({})
+  const [passwordVisibility, setPasswordVisibility] = useState({})
+  const [isChanged, setIsChanged] = useState(false)
 
   useEffect(() => {
-    const initialData = {};
+    const initialData = {}
     fields.forEach((field) => {
-      initialData[field.name] = field.value || '';
+      initialData[field.name] = field.value || ''
       if (field.type === 'password') {
-        setPasswordVisibility((prevState) => ({ ...prevState, [field.name]: false }));
+        setPasswordVisibility((prevState) => ({ ...prevState, [field.name]: false }))
       }
-    });
-    setFormData(initialData);
-    setInitialData(initialData);
-  }, [fields]);
+    })
+    setFormData(initialData)
+    setInitialData(initialData)
+  }, [fields])
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    const updatedFormData = { ...formData, [name]: value };
-    setFormData(updatedFormData);
-    setIsChanged(JSON.stringify(updatedFormData) !== JSON.stringify(initialData));
-  };
+    const { name, value } = e.target
+    const updatedFormData = { ...formData, [name]: value }
+    setFormData(updatedFormData)
+    setIsChanged(JSON.stringify(updatedFormData) !== JSON.stringify(initialData))
+  }
 
   const togglePasswordVisibility = (fieldName) => {
-    setPasswordVisibility((prevState) => ({ ...prevState, [fieldName]: !prevState[fieldName] }));
-  };
+    setPasswordVisibility((prevState) => ({ ...prevState, [fieldName]: !prevState[fieldName] }))
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    await onSubmit(formData);
-  };
+    e.preventDefault()
+    await onSubmit(formData)
+  }
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -75,7 +75,7 @@ const DynamicForm = ({ fields, onSubmit, isLoading, buttonText }) => {
         disabled={isLoading || !isChanged}
       />
     </Form>
-  );
-};
+  )
+}
 
-export default DynamicForm;
+export default DynamicForm

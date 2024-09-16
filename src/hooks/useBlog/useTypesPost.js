@@ -15,7 +15,7 @@ const usePostTypes = () => {
       const data = await fetchPostTypes()
       setPostTypes(data)
     } catch (err) {
-      setError(`Failed to load post types: ${err.message}`)
+      setError(err.message)
     } finally {
       setIsLoading(false)
     }

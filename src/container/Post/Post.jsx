@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
-import { createPath } from './paths'
+import { createPath, draftPath } from './paths'
 
-import Create from './views/index'
+import {Create, Draft} from './views/index'
 
 
 const Post = () => {
@@ -9,6 +9,7 @@ const Post = () => {
     <>
     <Routes>
       <Route path={createPath} element={<Create />} />
+      <Route path={draftPath} element={<Draft />} />
     </Routes>
     </>
   )

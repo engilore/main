@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts/authContexts'
 const useLogin = () => {
   const { login, isLoading } = useAuth()
   const navigate = useNavigate()
-  const [error, setError] = useState('')
+  const [error, setError] = useState(null)
 
   const loginFields = [
     { name: 'identifier', type: 'text', placeholder: 'Username or Email' },
@@ -14,7 +14,7 @@ const useLogin = () => {
   ]
 
   const handleLogin = async (formData) => {
-    setError('')
+    setError(null)
     try {
       await login(formData.identifier, formData.password)
       navigate('/hub')
