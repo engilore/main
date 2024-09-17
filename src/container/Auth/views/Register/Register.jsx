@@ -17,12 +17,11 @@ const Register = () => {
 
   return (
     <Section>
+      {error && <ErrorMessage message={error} />}
+
       <Contain>
         <RegisterBox>
           <Header>Register</Header>
-
-          {error && <ErrorMessage message={error} />}
-
           <Form
             fields={registrationFields}
             onSubmit={handleRegistrationSubmit}

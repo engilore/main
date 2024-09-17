@@ -1,5 +1,4 @@
-import React from 'react'
-import { Section, Contain, Content, TextInput, TextArea } from './postHeroStyle'
+import { Section, Contain, Content, TextInput, TextArea } from './styles'
 
 
 const PostHero = ({ formData, handleInputChange }) => (
@@ -10,7 +9,7 @@ const PostHero = ({ formData, handleInputChange }) => (
           id="title"
           type="text"
           name="title"
-          value={formData.title}
+          value={formData.title || ''}
           onChange={handleInputChange}
           placeholder="Enter post title"
           required
@@ -19,7 +18,7 @@ const PostHero = ({ formData, handleInputChange }) => (
         <TextArea
           id="summary"
           name="summary"
-          value={formData.summary}
+          value={formData.summary || ''}
           onChange={handleInputChange}
           placeholder="Enter post summary"
           required

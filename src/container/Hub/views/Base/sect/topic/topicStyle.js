@@ -74,3 +74,11 @@ export const TopicListContainer = styled.div`
     max-height: 300px;
   }
 `
+
+export const NoContent = styled.p`
+  color: var(--clr-grey);
+  font-family: var(--fnt-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  text-align: center;
+`

@@ -5,30 +5,31 @@ import {
 
 
 export const fetchTopics = async () => {
-    const apiUrl = `${baseUrl}${topicUrl}`
-  
-    try {
-      const response = await fetch(apiUrl, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-  
-      if (!response.ok) {
-        const errMessage = await response.text()
-        throw new Error(`Failed to fetch topics: ${response.status} ${errMessage}`)
-      }
-  
-      return await response.json()
-    } catch (error) {
-      console.error('Error fetching topics:', error.message)
-      throw error
+  const apiUrl = `${baseUrl}${topicUrl}`
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (!response.ok) {
+      const errMessage = await response.text()
+      throw new Error(`Failed to fetch topics: ${response.status} ${errMessage}`)
     }
+
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error(error.message)
+    throw error
   }
-  
-  
-  export const fetchTopicById = async (id) => {
+}
+
+
+export const fetchTopicById = async (id) => {
     const apiUrl = `${baseUrl}${topicDetailUrl(id)}`
   
     try {
@@ -53,7 +54,7 @@ export const fetchTopics = async () => {
   
   
   export const createTopic = async (token, topicData) => {
-    const apiUrl = `${baseUrl}${topicCreateUrl}`;
+    const apiUrl = `${baseUrl}${topicCreateUrl}`
   
     try {
       const response = await fetch(apiUrl, {
@@ -63,19 +64,19 @@ export const fetchTopics = async () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(topicData),
-      });
+      })
   
       if (!response.ok) {
         const errMessage = await response.text()
-        throw new Error(`Failed to create topic: ${response.status} ${errMessage}`);
+        throw new Error(`Failed to create topic: ${response.status} ${errMessage}`)
       }
   
-      return await response.json();
+      return await response.json()
     } catch (error) {
-      console.error('Error creating topic:', error.message);
-      throw error;
+      console.error('Error creating topic:', error.message)
+      throw error
     }
-  };
+  }
   
   
   

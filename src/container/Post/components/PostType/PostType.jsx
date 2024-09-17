@@ -1,5 +1,7 @@
-import { Section, Contain, Content, Label, NoPostTypes } from './postTypeStyle';
-import CustomSelect from '../../../../../../components/Select/index'; // Using your existing custom Select component
+import CustomSelect from '../../../../components/Select/index'
+
+import { Section, Contain, Content, Label, NoPostTypes } from './styles'
+
 
 const PostType = ({ formData, postTypes, handleInputChange }) => {
 
@@ -9,8 +11,8 @@ const PostType = ({ formData, postTypes, handleInputChange }) => {
         name: 'type',
         value: e.target.value,
       },
-    });
-  };
+    })
+  }
 
   return (
     <Section>
@@ -31,7 +33,7 @@ const PostType = ({ formData, postTypes, handleInputChange }) => {
         </Content>
       </Contain>
     </Section>
-  );
-};
+  )
+}
 
-export default PostType;
+export default PostType

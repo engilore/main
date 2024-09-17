@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import useUserPosts from '../../../../../../hooks/useBlog/useUserPosts'
 import PostList from '../../../../../../components/PostList/index'
+import Load from '../../../../../../components/Load/index'
 
 import { Section, Contain, PostsHeader } from './postsStyle'
 
@@ -10,29 +11,34 @@ const Posts = () => {
   const navigate = useNavigate()
 
   const handleViewPost = (postId, isDraft) => {
-    navigate(`/post/${postId}`, { state: { isDraft } })
+    if (isDraft) {
+      navigate(`/post/draft/${postId}`)
+    } else {
+      navigate(`/post/${postId}`)
+    }
   }
 
-  if (loading) return <p>Loading posts...</p>
+  
+  if (loading) return <Load />
   if (error) return <p>{error}</p>
 
   return (
     <Section>
-    <Contain>
-      <PostsHeader>Your Posts</PostsHeader>
-      <PostList 
-        posts={draftPosts} 
-        title="Draft's" 
-        isDraft={true} 
-        handleView={handleViewPost} 
-      />
-      <PostList 
-        posts={publishedPosts} 
-        title="Published" 
-        isDraft={false} 
-        handleView={handleViewPost} 
-      />
-    </Contain>
+      <Contain>
+        <PostsHeader>Your Posts</PostsHeader>
+        <PostList 
+          posts={draftPosts} 
+          title="Drafts" 
+          isDraft={true} 
+          handleView={handleViewPost} 
+        />
+        <PostList 
+          posts={publishedPosts} 
+          title="Published" 
+          isDraft={false} 
+          handleView={handleViewPost} 
+        />
+      </Contain>
     </Section>
   )
 }

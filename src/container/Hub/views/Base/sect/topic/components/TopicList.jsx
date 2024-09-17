@@ -1,11 +1,13 @@
 import ListItem from '../../../../../../../components/ListItem/index'
 
+import { NoContent } from '../topicStyle'
 import { FaPen, FaTrash } from 'react-icons/fa'
 
 
 const TopicList = ({ topics, handleEdit, handleDelete }) => {
+
   if (topics.length === 0) {
-    return <p>No topics available.</p>
+    return <NoContent>No topics available.</NoContent>
   }
 
   return (
@@ -33,7 +35,7 @@ const TopicList = ({ topics, handleEdit, handleDelete }) => {
             onClick: () => handleDelete(topic.id),
             icon: <FaTrash />,
             bgColor: '#BD1F36',
-            allowedRoles: ['admin']
+            allowedRoles: ['admin'],
           },
         ]
 

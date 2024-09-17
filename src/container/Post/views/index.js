@@ -1,3 +1,5 @@
+import View from './View/index'
 import Create from './Create/index'
+import Draft from './Draft/index'
 
-export default Create
+export { View, Create, Draft }

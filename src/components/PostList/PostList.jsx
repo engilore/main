@@ -22,7 +22,7 @@ const PostList = ({ posts, title, isDraft, handleView }) => (
         <HeaderInfo>
           <span>Title</span>
           <span>Status</span>
-          <span>Last Updated</span>
+          <span>{isDraft ? 'Last Updated' : 'Published On'}</span>
         </HeaderInfo>
       </HeaderContainer>
     </ListHeader>
@@ -33,7 +33,12 @@ const PostList = ({ posts, title, isDraft, handleView }) => (
             <PostItem key={post.id} onClick={() => handleView(post.id, isDraft)}>
               <Title>{post.title}</Title>
               <Status>{isDraft ? 'draft' : post.status}</Status>
-              <DateInfo>{new Date(post.updated_at).toLocaleDateString()}</DateInfo>
+              <DateInfo>
+                {isDraft
+                  ? new Date(post.updated_at).toLocaleString()
+                  : new Date(post.published_at).toLocaleString()
+                }
+              </DateInfo>
             </PostItem>
           ))
         ) : (

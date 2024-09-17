@@ -160,6 +160,9 @@ export const DateInfo = styled.span`
 
 export const NoPostsMessage = styled.p`
   color: var(--clr-grey);
+  font-family: var(--fnt-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
   text-align: center;
   margin-top: 20px;
 `

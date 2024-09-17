@@ -18,11 +18,11 @@ const Login = () => {
 
   return (
     <Section>
+      <ErrorMessage message={error} />
+
       <Contain>
         <LoginBox>
           <Header>Login</Header>
-
-          <ErrorMessage message={error} />
 
           <Form
             fields={loginFields}

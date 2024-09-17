@@ -1,10 +1,21 @@
-import { ErrorContainer } from './styles'
+import { useEffect, useState } from 'react'
+import { SuccessContainer } from './styles'
 
 
-const SucessComponents = ({ message }) => {
-    return (
-      message ? <ErrorContainer>{message}</ErrorContainer> : null
-    )
-  }
-  
-  export default SucessComponents
+const SuccessComponent = ({ message }) => {
+  const [isVisible, setIsVisible] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(false)
+    }, 5000)
+
+    return () => clearTimeout(timer)
+  }, [message])
+
+  if (!isVisible || !message) return null
+
+  return <SuccessContainer>{message}</SuccessContainer>
+}
+
+export default SuccessComponent

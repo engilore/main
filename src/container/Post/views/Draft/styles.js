@@ -1,24 +1,12 @@
 import styled from 'styled-components'
+import { FaCheck } from 'react-icons/fa'
+import { MdOutlineDataSaverOff } from 'react-icons/md'
 
 
 export const Section = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-`
-
-export const Navbar = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 10px 20px;
-  gap: 10px;
-  
-  @media (max-width: 768px) {
-    padding: 10px;
-    flex-direction: column;
-    align-items: stretch;
-  }
 `
 
 export const FlexContainer = styled.div`
@@ -49,4 +37,34 @@ export const FormWrapper = styled.form`
   flex-direction: column;
   gap: 15px;
   width: 100%;
+`
+
+export const AutoSave = styled.div`
+  color: var(--clr-secondary);
+  font-family: var(--fnt-primary);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+
+@media (max-width: 768px) {
+  font-size: 14px;
+}
+`
+
+export const AutoSaveIconSaving = styled(MdOutlineDataSaverOff)`
+animation: spin 1s infinite linear;
+color: var(--clr-secondary);
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+`
+
+export const AutoSaveIconSaved = styled(FaCheck)`
+  color: var(--clr-secondary);
 `

@@ -11,12 +11,12 @@ const useCreatePost = (token) => {
     setIsLoading(true)
     setError(null)
     setSuccess(null)
-
+  
     try {
-      await createPost(token, postData) 
+      await createPost(token, postData)
       setSuccess('Post created successfully')
     } catch (err) {
-      setError(`Failed to create post: ${err.message}`)
+      setError(err.message)
     } finally {
       setIsLoading(false)
     }

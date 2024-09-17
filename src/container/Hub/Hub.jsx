@@ -10,7 +10,7 @@ import { HeroSection } from './views/Base/sect/index'
 
 import { Layout, MainContent } from './styles'
 import { FaUserPen } from 'react-icons/fa6'
-import { FaUserFriends } from 'react-icons/fa'
+import { FaUserFriends,FaScroll } from 'react-icons/fa'
 import { RiQuillPenLine } from "react-icons/ri"
 import { RiSwordFill } from 'react-icons/ri'
 
@@ -18,7 +18,8 @@ import { RiSwordFill } from 'react-icons/ri'
 const blogLinks = [
   { to: "/post/create", icon: <FaUserFriends />, text: "Comrade's", bgColor: "var(--bg-primary)", hoverColor: "var(--bg-secondary)" },
   { to: "/conquests", icon: <RiSwordFill />, text: "Conquest's", bgColor: "var(--bg-danger)", hoverColor: "var(--bg-light)" },
-  { to: "/hub/users", icon: <FaUserPen />, text: "Manage User's", isDivider: true, bgColor: "var(--bg-danger)", hoverColor: "var(--bg-light)", allowedRoles: ['admin'] },
+  { to: "/hub/users", icon: <FaUserPen />, text: "Manage User's", bgColor: "var(--bg-danger)", hoverColor: "var(--bg-light)", allowedRoles: ['admin'] },
+  { to: "/hub/users", icon: <FaScroll />, text: "Manage Post's", isDivider: true, bgColor: "var(--bg-danger)", hoverColor: "var(--bg-light)", allowedRoles: ['admin'] },
   { to: "/post/create", icon: <RiQuillPenLine />, text: "Create Post", variant: "special", textColor: "var(--clr-primary)", bgColor: "var(--bg-light)"},
   { to: "/videos", icon: <RiSwordFill />, text: "Initiate Conquest", variant: "special", textColor: "var(--clr-white)", bgColor: "var(--bg-secondary)"},
 ]

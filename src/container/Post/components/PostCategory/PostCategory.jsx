@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
-import Select from '../../../../../../components/Select/index'
-import Tag from '../../../../../../components/Tag/index'
+import { useEffect } from 'react'
+import Select from '../../../../components/Select/index'
+import Tag from '../../../../components/Tag/index'
 
-import { Section, Contain, Content, Label, TagsWrapper, NoTopics } from './postCategoryStyle'
+import { Section, Contain, Content, Label, TagsWrapper, NoTopics } from './styles'
 
 
 const PostCategory = ({ formData, categories, topics, isLoading, handleInputChange, handleTopicChange, loadTopics }) => {
