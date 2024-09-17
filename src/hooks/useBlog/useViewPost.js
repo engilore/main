@@ -9,16 +9,15 @@ const useViewPost = (id, isDraft = false) => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken')
     const loadPost = async () => {
+      const token = localStorage.getItem('authToken')
+
       try {
-        if (isDraft) {
-          const draftPost = await fetchDraftPostById(token, id)
-          setPost(draftPost)
-        } else {
-          const publishedPost = await fetchPostById(id)
-          setPost(publishedPost)
-        }
+        const response = isDraft
+          ? await fetchDraftPostById(token, id)
+          : await fetchPostById(id)
+
+        setPost(response.data)
       } catch (err) {
         setError('Failed to load post')
       } finally {

@@ -3,6 +3,7 @@ import Button from '../../components/Button/index'
 
 
 export const NavbarWrapper = styled.nav`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

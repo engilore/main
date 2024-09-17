@@ -14,20 +14,12 @@ function App() {
       <Routes>
         
         <Route 
-            path={hubPath + "/*"} 
-            element={
-              <ProtectedRoute allowedRoles={['guardian', 'admin']}>
-                <Hub />
-              </ProtectedRoute>
-            } 
-        />
-        <Route 
-            path={postPath + "/*"} 
-            element={
-              <ProtectedRoute allowedRoles={['guardian', 'admin']}>
-                <Post />
-              </ProtectedRoute>
-            } 
+          path={hubPath + "/*"} 
+          element={
+            <ProtectedRoute allowedRoles={['guardian', 'admin']}>
+              <Hub />
+            </ProtectedRoute>
+          } 
         />
         <Route 
           path={accountPath + "/*"} 
@@ -45,6 +37,7 @@ function App() {
             </ProtectedRoute>
           } 
         />
+        <Route path={postPath + "/*"} element={<Post />} />
         <Route path={mainPath + "*"} element={<Main />} />
         <Route path={authPath + "/*"} element={<Auth />} />
         <Route path={blogPath + "/*"} element={<Blog />} />
