@@ -12,7 +12,7 @@ import {
   Header,
   FormContainer,
   UserListContainer,
-} from './styles'
+} from './userStyles'
 
 
 const User = () => {

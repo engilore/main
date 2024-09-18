@@ -20,6 +20,7 @@ const useViewPost = (id, isDraft = false) => {
         setPost(response.data)
       } catch (err) {
         setError('Failed to load post')
+        console.error(`Error fetching post ${id}:`, err.message)
       } finally {
         setLoading(false)
       }
@@ -29,5 +30,6 @@ const useViewPost = (id, isDraft = false) => {
 
   return { post, loading, error }
 }
+
 
 export default useViewPost
