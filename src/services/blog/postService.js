@@ -20,13 +20,19 @@ export const fetchPosts = async () => {
       throw new Error(`Failed to fetch posts: ${response.status} ${errMessage}`)
     }
 
-    return await response.json()
+    const data = await response.json()
+
+    if (Array.isArray(data)) {
+      return { data }
+    } else if (data.data && Array.isArray(data.data)) {
+      return { data: data.data }
+    } else {
+      throw new Error('Unexpected response format')
+    }
   } catch (error) {
-    console.error('Error fetching posts:', error.message)
     throw error
   }
 }
-
 
 export const fetchUserPosts = async (token) => {
   const apiUrl = `${baseUrl}${userPostUrl}`
@@ -59,6 +65,10 @@ export const fetchPostById = async (id) => {
 
     if (!response.ok) {
       const errMessage = await response.text()
+      // Specific handling for 404 errors
+      if (response.status === 404) {
+        throw new Error(`Post not found: ${response.status} ${errMessage}`)
+      }
       throw new Error(`Failed to fetch post: ${response.status} ${errMessage}`)
     }
 
@@ -135,7 +145,12 @@ export const deletePost = async (token, id) => {
       return { success: true }
     }
 
-    const data = await response.json()
+    let data
+    try {
+      data = await response.json()
+    } catch (error) {
+      throw new Error(`Deletion failed: ${response.status} - Unable to parse response`)
+    }
 
     if (!response.ok) {
       throw new Error(`Deletion failed: ${response.status} ${data.message || data.error || 'Unknown error'}`)
@@ -143,11 +158,9 @@ export const deletePost = async (token, id) => {
 
     return data
   } catch (error) {
-    console.error('Delete Post Error:', error.message)
     throw error
   }
 }
-
 
 export const fetchPostTypes = async () => {
   const apiUrl = `${baseUrl}${postTypesUrl}`
