@@ -1,26 +1,28 @@
+import { useNavigate } from 'react-router-dom'
 import useCreatePost from '../../../../hooks/useBlog/useCreatePost'
 import useTypesPost from '../../../../hooks/useBlog/useTypesPost'
 import { useCategories } from '../../../../hooks/useCategories'
 import { useTopics } from '../../../../hooks/useTopics'
 import { usePostForm } from './hooks'
 
-import ErrorMessage from '../../../../components/ErrorMessage'
-import SuccessMessage from '../../../../components/SuccessMessage'
-import Loading from '../../../../components/Loading'
-import Button from '../../../../components/Button'
+import Nav from '../../../../components/Nav'
+import ErrorMessage from '../../../../components/ErrorMessage/index'
+import SuccessMessage from '../../../../components/SuccessMessage/index'
+import Loading from '../../../../components/Loading/index'
+import Button from '../../../../components/Button/index'
 
 import { PostHero, PostContent, PostCategory, PostType } from '../../components/index'
 
-import { Section, FlexContainer, FormWrapper, Navbar } from './styles'
+import { Section, FlexContainer, FormWrapper } from './styles'
 import { FaArrowLeft } from 'react-icons/fa'
 
 
 const CreatePost = () => {
-  const token = localStorage.getItem('authToken');
-  const { handleCreatePost, isLoading: postLoading, error, success } = useCreatePost(token);
-  const { categories, isLoading: categoryLoading } = useCategories(token);
-  const { topics, isLoading: topicLoading, loadTopics } = useTopics(token);
-  const { postTypes, isLoading: postTypesLoading } = useTypesPost();
+  const token = localStorage.getItem('authToken')
+  const { handleCreatePost, isLoading: postLoading, error, success } = useCreatePost(token)
+  const { categories, isLoading: categoryLoading } = useCategories(token)
+  const { topics, isLoading: topicLoading, loadTopics } = useTopics(token)
+  const { postTypes, isLoading: postTypesLoading } = useTypesPost()
 
   const { formData, handleInputChange, handleTopicChange } = usePostForm({
     title: '',
@@ -29,18 +31,24 @@ const CreatePost = () => {
     category: [],
     topics: [],
     type: '',
-  }, topics, loadTopics);
+  }, topics, loadTopics)
 
-  const isLoading = categoryLoading || topicLoading || postLoading || postTypesLoading;
+  const isLoading = categoryLoading || topicLoading || postLoading || postTypesLoading
+
+  const navigate = useNavigate()
 
   const handleSubmit = (e, status) => {
-    e.preventDefault();
+    e.preventDefault()
     const postData = {
       ...formData,
       status,
-    };
-    handleCreatePost(postData);
-  };
+    }
+    handleCreatePost(postData)
+    
+    if (status === 'draft') {
+      navigate('/hub')
+    }
+  }
 
   return (
     <Section>
@@ -53,35 +61,43 @@ const CreatePost = () => {
         <>
           <PostHero formData={formData} handleInputChange={handleInputChange} />
 
-          <Navbar>
-            <Button
-              text="Back to Hub"
-              size="large"
-              shape="rounded"
-              bgColor="var(--bg-light)"
-              textColor="var(--clr-primary)"
-              icon={<FaArrowLeft />}
-              to="/hub"
-            />
-            <Button
-              text="Save Draft"
-              size="large"
-              shape="rounded"
-              bgColor="var(--bg-light)"
-              textColor="var(--clr-primary)"
-              onClick={(e) => handleSubmit(e, 'draft')}
-              disabled={postLoading}
-            />
-            <Button
-              text="Publish"
-              size="large"
-              shape="rounded"
-              bgColor="var(--bg-primary)"
-              textColor="var(--clr-white)"
-              onClick={(e) => handleSubmit(e, 'published')}
-              disabled={postLoading}
-            />
-          </Navbar>
+          <Nav
+            leftContent={
+              <Button
+                text="Back to Hub"
+                size="large"
+                shape="rounded"
+                bgColor="var(--bg-light)"
+                textColor="var(--clr-primary)"
+                icon={<FaArrowLeft />}
+                to="/hub"
+              />
+            }
+            centerContent={null}
+            rightContent={
+              <>
+                <Button
+                  text="Save Draft"
+                  size="large"
+                  shape="rounded"
+                  bgColor="var(--bg-light)"
+                  textColor="var(--clr-primary)"
+                  onClick={(e) => handleSubmit(e, 'draft')}
+                  disabled={postLoading}
+                />
+                <Button
+                  text="Publish"
+                  size="large"
+                  shape="rounded"
+                  bgColor="var(--bg-primary)"
+                  textColor="var(--clr-white)"
+                  onClick={(e) => handleSubmit(e, 'published')}
+                  disabled={postLoading}
+                />
+              </>
+            }
+            bgColor="var(--bg-white)"
+          />
 
           <FormWrapper>
             <FlexContainer>
@@ -106,7 +122,7 @@ const CreatePost = () => {
         </>
       )}
     </Section>
-  );
-};
+  )
+}
 
-export default CreatePost;
+export default CreatePost

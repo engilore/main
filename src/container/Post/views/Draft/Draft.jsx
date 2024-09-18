@@ -10,8 +10,8 @@ import Button from '../../../../components/Button/index'
 import ErrorMessage from '../../../../components/ErrorMessage/index'
 import SuccessMessage from '../../../../components/SuccessMessage/index'
 import Loading from '../../../../components/Loading/index'
-
 import { PostHero, PostContent, PostCategory, PostType } from '../../components'
+
 import { Section, FlexContainer, FormWrapper, AutoSave, AutoSaveIconSaving, AutoSaveIconSaved } from './styles'
 import { FaArrowLeft } from 'react-icons/fa'
 import { RiQuillPenFill } from 'react-icons/ri'

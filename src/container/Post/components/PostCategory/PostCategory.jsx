@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import Select from '../../../../components/Select/index'
 import Tag from '../../../../components/Tag/index'
 
@@ -6,11 +6,15 @@ import { Section, Contain, Content, Label, TagsWrapper, NoTopics } from './style
 
 
 const PostCategory = ({ formData, categories, topics, isLoading, handleInputChange, handleTopicChange, loadTopics }) => {
-  
+
+  const getSelectedCategory = useCallback(() => {
+    return categories.find(category => category.name === formData.category[0])
+  }, [categories, formData.category])
+
   const handleCategoryChange = (e) => {
     const selectedValue = Number(e.target.value)
     const selectedCategory = categories.find(category => category.id === selectedValue)
-    
+
     if (selectedCategory) {
       handleInputChange({
         target: {
@@ -18,16 +22,23 @@ const PostCategory = ({ formData, categories, topics, isLoading, handleInputChan
           value: [selectedCategory.name],
         },
       })
-    } else {
-      console.error("Selected category not found")
+      loadTopics(selectedValue)
     }
   }
 
   useEffect(() => {
     if (formData.category.length > 0 && !isLoading && topics.length === 0) {
-      loadTopics(formData.category[0])
+      const selectedCategory = getSelectedCategory()
+      if (selectedCategory) {
+        loadTopics(selectedCategory.id)
+      }
     }
-  }, [formData.category, isLoading, loadTopics, topics.length])
+  }, [formData.category, isLoading, loadTopics, topics.length, getSelectedCategory])
+
+  const filteredTopics = topics.filter(topic => {
+    const selectedCategory = getSelectedCategory()
+    return selectedCategory && topic.category === selectedCategory.id
+  })
 
   return (
     <Section>
@@ -46,9 +57,9 @@ const PostCategory = ({ formData, categories, topics, isLoading, handleInputChan
 
           {isLoading ? (
             <p>Loading topics...</p>
-          ) : formData.category.length > 0 && topics.length > 0 ? (
+          ) : formData.category.length > 0 && filteredTopics.length > 0 ? (
             <TagsWrapper>
-              {topics.map((topic) => (
+              {filteredTopics.map((topic) => (
                 <Tag
                   key={topic.id}
                   text={topic.name}

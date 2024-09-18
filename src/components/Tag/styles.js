@@ -10,7 +10,6 @@ export const Tagger = styled.span`
   font-weight: var(--fw-medium);
   padding: 5px 10px;
   border-radius: var(--radius-pill);
-  cursor: pointer;
   text-decoration: none;
   color: ${({ $textColor }) => $textColor || 'var(--clr-white)'};
   background-color: ${({ $outlined, $bgColor }) => $bgColor || ($outlined ? 'transparent' : 'var(--bg-primary)')};
