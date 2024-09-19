@@ -14,6 +14,8 @@ export const useFetchPosts = (initialCount = 5) => {
     const getPosts = async () => {
       try {
         const response = await fetchPosts()
+        console.log("Fetched posts response:", response)
+
         if (Array.isArray(response.data)) {
           setPosts(response.data)
           setVisiblePosts(response.data.slice(0, count))
@@ -22,6 +24,7 @@ export const useFetchPosts = (initialCount = 5) => {
           setError('Invalid data format')
         }
       } catch (error) {
+        console.log("Error while fetching posts:", error)
         setError(error.message)
       } finally {
         setLoading(false)
