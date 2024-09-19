@@ -63,9 +63,7 @@ const View = ({ isDraft = false }) => {
                 key={index}
                 text={topic}
                 textColor="var(--clr-white)"
-                bgColor="var(--bg-primary-light)"
-                outlined={true}
-                borderColor="var(--bg-primary)"
+                bgColor="var(--bg-primary)"
               />
             ))}
           </TagsWrapper>

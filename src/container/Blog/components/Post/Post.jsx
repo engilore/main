@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useFetchPosts } from '../../../../hooks/useBlog/useFetchPosts'
 import Tag from '../../../../components/Tag/index'
 import Load from '../../../../components/Load/index'
+import ErrorMessage from '../../../../components/ErrorMessage/index'
 
 import {
   PostContainer,
@@ -19,14 +21,14 @@ const Post = ({ count = 4 }) => {
 
   if (loading) return <Load />
 
-  if (error) return <div>Error: {error}</div>
+  if (error) return <ErrorMessage message={error} />
 
   if (!visiblePosts.length) return <div>No posts found.</div>
 
   return (
     <>
       {visiblePosts.map((post, index) => (
-        <PostContainer key={index}>
+        <PostContainer as={Link} to={`/post/${post.id}`} key={index}>
           <PostType>
             {Array.isArray(post.type) ? (
               post.type.map((type, idx) => <span key={idx}>{type}</span>)

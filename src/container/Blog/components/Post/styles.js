@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -24,7 +23,7 @@ export const Author = styled.span`
   display: block;
 `
 
-export const PostContainer = styled(Link)`
+export const PostContainer = styled.div`
   text-decoration: none;
   display: flex;
   flex-direction: column;

@@ -14,7 +14,6 @@ export const useFetchPosts = (initialCount = 5) => {
     const getPosts = async () => {
       try {
         const response = await fetchPosts()
-        console.log("Fetched posts response:", response)
 
         if (Array.isArray(response.data)) {
           setPosts(response.data)
