@@ -20,6 +20,7 @@ import {
   TagsWrapper
 } from './styles'
 
+
 const View = ({ isDraft = false }) => {
   const { id } = useParams()
   const { post = {}, loading, error } = useViewPost(id, isDraft)
@@ -33,53 +34,45 @@ const View = ({ isDraft = false }) => {
     return new Date(dateString).toLocaleDateString(undefined, options)
   }
 
-  const publishedDate = post.created_at ? formatDate(post.created_at) : 'Unknown Date'
+  const publishedDate = post.created_at ? formatDate(post.created_at) : ''
 
   return (
     <Section>
       <Hero>
         <HeroWrapper>
-          <Type>{post.type || 'Unknown Type'}</Type>
-          <Title>{post.title || 'Untitled'}</Title>
-          <Summary>{post.summary || 'No summary available.'}</Summary>
+          {post.type && <Type>{post.type}</Type>}
+          {post.title && <Title>{post.title}</Title>}
+          {post.summary && <Summary>{post.summary}</Summary>}
         </HeroWrapper>
+
+        <MetadataWrapper>
+          {post.author && (
+            <AuthorText>
+              {`${post.author.first_name} ${post.author.last_name}`}
+            </AuthorText>
+          )}
+          {publishedDate && <DateText>{publishedDate}</DateText>}
+        </MetadataWrapper>
       </Hero>
 
       <Contain>
-        <TagsWrapper>
-          {post.topics && post.topics.length > 0 ? (
-            post.topics.map((topic, index) => (
+        {post.topics && post.topics.length > 0 && (
+          <TagsWrapper>
+            {post.topics.map((topic, index) => (
               <Tag
                 key={index}
                 text={topic}
-                textColor="var(--clr-secondary)"
-                bgColor="var(--bg-light)"
+                textColor="var(--clr-white)"
+                bgColor="var(--bg-primary-light)"
                 outlined={true}
-                borderColor="var(--bg-light)"
+                borderColor="var(--bg-primary)"
               />
-            ))
-          ) : (
-            <p>No topics available.</p>
-          )}
-        </TagsWrapper>
-
-        <MetadataWrapper>
-          {post.author ? (
-            <AuthorText>
-              By {`${post.author.first_name} ${post.author.last_name}`}
-            </AuthorText>
-          ) : (
-            <AuthorText>Author unknown</AuthorText>
-          )}
-          <DateText>{publishedDate}</DateText>
-        </MetadataWrapper>
+            ))}
+          </TagsWrapper>
+        )}
 
         <Content>
-          {post.content ? (
-            <Text>{post.content}</Text>
-          ) : (
-            <Text>No content available.</Text>
-          )}
+          {post.content && <Text>{post.content}</Text>}
         </Content>
       </Contain>
     </Section>

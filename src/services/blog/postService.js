@@ -65,7 +65,6 @@ export const fetchPostById = async (id) => {
 
     if (!response.ok) {
       const errMessage = await response.text()
-      // Specific handling for 404 errors
       if (response.status === 404) {
         throw new Error(`Post not found: ${response.status} ${errMessage}`)
       }

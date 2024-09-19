@@ -33,7 +33,7 @@ export const HeroWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 100px;
+  margin: 100px 0;
 `
 
 export const Type = styled.div`
@@ -71,7 +71,7 @@ export const Summary = styled.div`
 `
 
 export const Content = styled.div`
-  min-height: 50vh;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -98,16 +98,16 @@ export const DateText = styled.div`
 export const AuthorText = styled.div`
   color: var(--clr-primary);
   font-family: var(--fnt-secondary);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-medium);
   font-size: var(--fs-lg);
 `
 
 export const MetadataWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 10px;
-  margin: 10px;
+  width: 90%;
+  max-width: 800px;
+  padding: 20px 0;
   font-size: var(--fs-md);
   color: var(--clr-secondary);
   text-align: left;
@@ -119,8 +119,11 @@ export const MetadataWrapper = styled.div`
 `
 
 export const TagsWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 20px;
 `

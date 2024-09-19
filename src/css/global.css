@@ -14,7 +14,9 @@
 
     /* Background Color Palette */
     --bg-primary: #5ca4a9;
+    --bg-primary-light: #a1d1d4;
     --bg-secondary: #4f000b;
+    --bg-secondary-light: #a04a56;
     --bg-accent: #edf0da;
     --bg-success: #A0E8AF;
     --bg-danger: #E39695;

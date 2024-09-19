@@ -16,10 +16,10 @@ const FeaturedPosts = () => {
         </Title>
       </Header>
       <Contain>
-        <FeaturedPost count={3} />
+        <FeaturedPost />
       </Contain>
     </Section>
-  );
-};
+  )
+}
 
 export default FeaturedPosts

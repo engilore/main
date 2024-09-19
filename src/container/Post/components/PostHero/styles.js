@@ -82,10 +82,11 @@ export const TextInput = styled.input`
 `
 
 export const TextArea = styled.textarea`
-  color: var(--clr-primary);
-  font-family: var(--fnt-secondary);
-  font-weight: var(--fw-medium);
+  color: var(--clr-secondary);
+  font-family: var(--fnt-primary);
   font-size: var(--fs-lg);
+  font-weight: var(--fw-light);
+  font-style: italic;
   background-color: var(--bg-accent);
   width: 100%;
   padding: 10px;

@@ -21,7 +21,6 @@ const SpotlightPost = () => {
     title: "Exploring the Depths of Quantum Physics",
     type: "Analysis",
     intro: "Dive into the fascinating world of quantum mechanics, where particles behave in ways that challenge our understanding of reality. Discover how these principles are shaping the future of technology.",
-    image: "https://via.placeholder.com/800x400",
     link: "/posts/quantum-physics",
   }
   const [loadCompleted, setLoadCompleted] = useState(false)
