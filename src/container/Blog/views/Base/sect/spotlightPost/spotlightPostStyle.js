@@ -1,6 +1,5 @@
 import styled, { keyframes, css } from 'styled-components'
 
-
 const fadeIn = keyframes`
   from {
     opacity: 0;
@@ -11,12 +10,14 @@ const fadeIn = keyframes`
 `
 
 export const Section = styled.section`
+  background-color: var(--bg-accent);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px 20px;
   position: relative;
   overflow: hidden;
+  min-height: 300px; /* Ensures there is some height to center the message */
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -107,7 +108,6 @@ export const Title = styled.h1`
   }
 `
 
-
 export const Intro = styled.p`
   color: var(--clr-secondary);
   font-size: var(--fs-xl);
@@ -116,5 +116,25 @@ export const Intro = styled.p`
 
   @media (max-width: 768px) {
     font-size: var(--fs-lg);
+  }
+`
+
+export const NoPostsMessage = styled.p`
+  color: var(--clr-grey);
+  font-family: var(--fnt-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 600px;
+  line-height: 1.5;
+
+  @media (max-width: 768px) {
+    font-size: var(--fs-md);
+    padding: 0 10px;
   }
 `

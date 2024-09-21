@@ -9,7 +9,8 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: ${({ $centered }) => ($centered ? 'center' : 'flex-start')};
+  min-height: ${({ $centered }) => ($centered ? '300px' : 'auto')};
 `
 
 export const Header = styled.h2`
@@ -80,6 +81,7 @@ export const Intro = styled.p`
   font-weight: var(--fw-normal);
   opacity: var(--opacity-strong);
   border-radius: var(--radius-md);
+  width: 100%;
   padding: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -136,5 +138,22 @@ export const TagPills = styled.div`
 
   @media (max-width: 768px) {
     justify-content: center;
+  }
+`
+
+export const NoPostsMessage = styled.p`
+  color: var(--clr-grey);
+  font-family: var(--fnt-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  text-align: center;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 600px;
+  line-height: 1.5;
+
+  @media (max-width: 768px) {
+    font-size: var(--fs-md);
+    padding: 0 10px;
   }
 `

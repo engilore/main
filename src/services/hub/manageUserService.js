@@ -1,7 +1,7 @@
 import { baseUrl } from '../api'
 import {
     userListUrl, userDetailUrl, userUpdateUrl, userDeleteUrl, userAssignRoleUrl, userRevokeRoleUrl
-} from '../../container/Hub/urls'
+} from '../urls'
 
 
 export const fetchUsers = async (token) => {

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import useUserPosts from '../../../../../../hooks/useBlog/useUserPosts'
-import PostList from '../../../../../../components/PostList/index'
+import PostManageList from '../../../../../../components/PostManageList/index'
 import Load from '../../../../../../components/Load/index'
 
 import { Section, Contain, PostsHeader } from './postsStyle'
@@ -26,13 +26,13 @@ const Posts = () => {
     <Section>
       <Contain>
         <PostsHeader>Your Posts</PostsHeader>
-        <PostList 
+        <PostManageList 
           posts={draftPosts} 
           title="Drafts" 
           isDraft={true} 
           handleView={handleViewPost} 
         />
-        <PostList 
+        <PostManageList 
           posts={publishedPosts} 
           title="Published" 
           isDraft={false} 

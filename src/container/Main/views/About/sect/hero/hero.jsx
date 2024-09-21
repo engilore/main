@@ -100,10 +100,10 @@ const Hero = () => {
     "Mathematics"
   ]
   const languages = [
-    "English",
-    "Spanish",
-    "Russian",
-    "French"
+    "English | Native",
+    "Spanish | Fluent",
+    "Russian | Conversational",
+    "French | Comprehension"
   ]
 
   return (
@@ -141,8 +141,6 @@ const Hero = () => {
         listItems={tools} 
         />
         <InfoSection title="Languages"
-        description="In order to develop a deeper comprehension of the texts I explore, I read both the original language versions and 
-        their English translations. Consequently, I have acquired significant linguistic assets."
         listItems={languages} 
         />
       </DetailsCard>

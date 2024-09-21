@@ -1,5 +1,5 @@
 import { baseUrl } from '../api'
-import { authUrl, logoutUrl } from '../../container/Auth/urls'
+import { authUrl, logoutUrl } from '../urls'
 
 
 export const logoutUser = async () => {

@@ -1,4 +1,4 @@
-import FeaturedPost from '../../../../../Blog/components/Post/index'
+import PostList from '../../../../../../components/PostList/index'
 
 import {
     Section,
@@ -19,10 +19,10 @@ const FeaturedPosts = () => {
         <CoatOfArms src={badge} alt="Coat of Arms" />
       </ArmsWrapper>
       <Contain>
-        <FeaturedPost count={4} />
+        <PostList count={4} />
       </Contain>
     </Section>
-  );
-};
+  )
+}
 
-export default FeaturedPosts;
+export default FeaturedPosts
