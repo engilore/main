@@ -15,6 +15,7 @@ export const Layout = styled.div`
 `
 
 export const MainContent = styled.main`
+  width: 90%;
   flex-grow: 1;
   margin-right: 20px;
 

@@ -1,5 +1,5 @@
 import { baseUrl } from '../api'
-import { authUrl, validateUrl } from '../../container/Auth/urls'
+import { authUrl, validateUrl } from '../urls'
 
 
 export const validateUser = async (token) => {

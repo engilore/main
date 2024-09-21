@@ -1,4 +1,4 @@
-import FeaturedPost from '../../../../components/Post/index'
+import PostList from '../../../../../../components/PostList/index'
 
 import {
     Section,
@@ -16,7 +16,7 @@ const FeaturedPosts = () => {
         </Title>
       </Header>
       <Contain>
-        <FeaturedPost />
+      <PostList count={4} />
       </Contain>
     </Section>
   )

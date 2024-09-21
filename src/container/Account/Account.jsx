@@ -11,12 +11,7 @@ import { HiOutlineLogout } from 'react-icons/hi'
 
 
 const accountLinks = [
-  { title: "Account", to: "/account", text: "Profile" },
-  { to: "/", text: "Preference's" },
-  { to: "/", text: "Notification's" },
-  { title: "Subscription", to: "/", text: "Manage" },
-  { title: "Auxiliership", to: "/", text: "Manage" },
-  { to: "/", text: "Join", isDivider: true,},
+  { title: "Account", isDivider: true, to: "/account", text: "Profile" },
   { to: "/auth/logout", icon: <HiOutlineLogout />, text: "Sign Out", variant: "special", textColor: "var(--clr-primary)", bgColor: "transparent"},
   { to: "/account/delete", icon: <MdDeleteOutline />, text: "Delete", variant: "special", textColor: "var(--clr-danger)", bgColor: "var(--bg-danger)"},
 ]

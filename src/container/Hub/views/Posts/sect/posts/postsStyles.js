@@ -25,7 +25,7 @@ export const Content = styled.div`
 `
 
 
-export const Header = styled.h1`
+export const PostsHeader = styled.h1`
   color: var(--clr-primary);
   font-family: var(--fnt-secondary);
   font-size: var(--fs-2xl);

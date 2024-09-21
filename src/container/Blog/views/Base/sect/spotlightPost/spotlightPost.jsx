@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useFetchPosts } from '../../../../../../hooks/useBlog/useFetchPosts'
 
 import Button from '../../../../../../components/Button/index'
-import { Animation1 } from '../../../../../../components/Canvas/index'
+import Load from '../../../../../../components/Load/index'
 
 import {
   Section,
@@ -11,50 +12,58 @@ import {
   Content,
   Type,
   Title,
-  Intro
+  Intro,
+  NoPostsMessage
 } from './spotlightPostStyle'
 import { FaArrowRightLong } from 'react-icons/fa6'
 
 
 const SpotlightPost = () => {
-  const post = {
-    title: "Exploring the Depths of Quantum Physics",
-    type: "Analysis",
-    intro: "Dive into the fascinating world of quantum mechanics, where particles behave in ways that challenge our understanding of reality. Discover how these principles are shaping the future of technology.",
-    link: "/posts/quantum-physics",
-  }
+  const { posts: visiblePosts = [], loading, error } = useFetchPosts(5)
   const [loadCompleted, setLoadCompleted] = useState(false)
+  const featuredPost = visiblePosts.length > 0 
+    ? visiblePosts.find(post => post.is_featured) || visiblePosts[0] 
+    : null
+    
+  useEffect(() => {
+    setLoadCompleted(false) 
+  }, [featuredPost])
+
+  if (loading && !featuredPost) return <Load />
 
   return (
     <Section>
-      <Animation1 />
-      <Contain $hasImage={!!post.image}>
-        {post.image && (
-          <ImageContainer>
-            <Image 
-              src={post.image} 
-              alt={post.title}
-              onLoad={() => setLoadCompleted(true)}
-              $loadCompleted={loadCompleted}
+      {error && <NoPostsMessage>{error}</NoPostsMessage>}
+      {!featuredPost && !error && <NoPostsMessage>No spotlight post available.</NoPostsMessage>}
+      {featuredPost && (
+        <Contain $hasImage={!!featuredPost.featured_image}>
+          {featuredPost.featured_image && (
+            <ImageContainer>
+              <Image 
+                src={featuredPost.featured_image} 
+                alt={featuredPost.title}
+                onLoad={() => setLoadCompleted(true)}
+                $loadCompleted={loadCompleted}
+              />
+            </ImageContainer>
+          )}
+          <Content $hasImage={!!featuredPost.featured_image}>
+            <Type>{featuredPost.type}</Type>
+            <Title>{featuredPost.title}</Title>
+            <Intro>{featuredPost.summary}</Intro>
+            <Button
+              text="Continue Reading"
+              size="medium"
+              shape="rounded"
+              bgColor="var(--bg-dark)"
+              hoverColor="none"
+              icon={<FaArrowRightLong />}
+              iconRight
+              to={`/post/${featuredPost.id}`}
             />
-          </ImageContainer>
-        )}
-        <Content $hasImage={!!post.image}>
-          <Type>{post.type}</Type>
-          <Title>{post.title}</Title>
-          <Intro>{post.intro}</Intro>
-          <Button
-            text="Continue Reading"
-            size="medium"
-            shape="rounded"
-            bgColor="var(--bg-dark)"
-            hoverColor="none"
-            icon={<FaArrowRightLong />}
-            iconRight
-            to={post.link}
-          />
-        </Content>
-      </Contain>
+          </Content>
+        </Contain>
+      )}
     </Section>
   )
 }

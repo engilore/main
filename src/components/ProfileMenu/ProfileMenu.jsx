@@ -47,7 +47,6 @@ const ProfileMenu = () => {
           {(user?.is_guardian || user?.is_admin) && (
             <ProfileDropdownLink to='/hub'>Hub</ProfileDropdownLink>
           )}
-          <ProfileDropdownLink to='/profile'>Profile</ProfileDropdownLink>
           <ProfileDropdownLink to='/account'>Account</ProfileDropdownLink>
 
           <ProfileDropdownLink to='/auth/logout/'>

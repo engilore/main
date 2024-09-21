@@ -37,15 +37,16 @@ const CreatePost = () => {
 
   const navigate = useNavigate()
 
-  const handleSubmit = (e, status) => {
+  const handleSubmit = async (e, status) => {
     e.preventDefault()
     const postData = {
       ...formData,
       status,
     }
-    handleCreatePost(postData)
-    
-    if (status === 'draft') {
+  
+    await handleCreatePost(postData)
+  
+    if (status === 'draft' || status === 'published') {
       navigate('/hub')
     }
   }

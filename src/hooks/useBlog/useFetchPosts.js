@@ -2,30 +2,30 @@ import { useState, useEffect } from 'react'
 import { fetchPosts } from '../../services/blog/postService'
 
 
-export const useFetchPosts = (initialCount = 5) => {
+export const useFetchPosts = (count = null) => {
   const [posts, setPosts] = useState([])
-  const [visiblePosts, setVisiblePosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [count, setCount] = useState(initialCount)
-  const [hasMore, setHasMore] = useState(true)
+  const [featuredPost, setFeaturedPost] = useState(null)
 
   useEffect(() => {
     const getPosts = async () => {
+      setLoading(true)
       try {
-        const response = await fetchPosts()
-        console.log("Fetched posts response:", response)
-
-        if (Array.isArray(response.data)) {
-          setPosts(response.data)
-          setVisiblePosts(response.data.slice(0, count))
-          setHasMore(response.data.length > count)
+        const { data } = await fetchPosts()
+        
+        if (count) {
+          setPosts(data.slice(0, count))
         } else {
-          setError('Invalid data format')
+          setPosts(data)
+        }
+
+        if (data && data.length > 0) {
+          setFeaturedPost(data[0])
         }
       } catch (error) {
-        console.log("Error while fetching posts:", error)
-        setError(error.message)
+        console.error('Error while fetching posts:', error.message)
+        setError(error.message || 'Something went wrong while fetching posts.')
       } finally {
         setLoading(false)
       }
@@ -34,12 +34,5 @@ export const useFetchPosts = (initialCount = 5) => {
     getPosts()
   }, [count])
 
-  const loadMorePosts = () => {
-    const newCount = count + 5
-    setCount(newCount)
-    setVisiblePosts(posts.slice(0, newCount))
-    setHasMore(posts.length > newCount)
-  }
-
-  return { visiblePosts, loading, error, hasMore, loadMorePosts }
+  return { posts, featuredPost, loading, error }
 }

@@ -1,7 +1,7 @@
 import { baseUrl } from '../api'
 import {
     categoryUrl, categoryCreateUrl, categoryDetailUrl, categoryUpdateUrl, categoryDeleteUrl,
-} from '../../container/Hub/urls'
+} from '../urls'
 
 
 export const fetchCategories = async () => {
