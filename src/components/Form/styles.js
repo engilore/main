@@ -21,25 +21,3 @@ export const Label = styled.label`
   display: block;
   width: 100%;
 `
-
-export const SubmitButton = styled.button`
-  color: var(--clr-white);
-  background-color: var(--bg-primary);
-  font-family: var(--fnt-primary);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-md);
-  border-radius: var(--radius-md);
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
-
-  &:hover {
-    opacity: var(--opacity-strong);
-  }
-
-  &:disabled {
-    opacity: var(--opacity-light);
-    cursor: not-allowed;
-  }
-`
