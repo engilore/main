@@ -4,8 +4,8 @@ import {
 } from '../urls'
 
 
-export const fetchPosts = async () => {
-  const apiUrl = `${baseUrl}${postUrl}`
+export const fetchPosts = async (page = 1, limit = 10) => {
+  const apiUrl = `${baseUrl}${postUrl}?page=${page}&page_size=${limit}`
 
   try {
     const response = await fetch(apiUrl, {
@@ -22,12 +22,8 @@ export const fetchPosts = async () => {
 
     const data = await response.json()
 
-    if (Array.isArray(data)) {
-      return { data }
-    } else if (data.results && Array.isArray(data.results)) {
-      return { data: data.results }
-    } else if (data.data && Array.isArray(data.data)) {
-      return { data: data.data }
+    if (data.results && typeof data.count === 'number') {
+      return { data: data.results, total: data.count }
     } else {
       throw new Error('Unexpected response format')
     }
@@ -36,7 +32,6 @@ export const fetchPosts = async () => {
     throw error
   }
 }
-
 
 export const fetchUserPosts = async (token) => {
   const apiUrl = `${baseUrl}${userPostUrl}`

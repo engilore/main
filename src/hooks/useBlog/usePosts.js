@@ -2,27 +2,20 @@ import { useState, useEffect } from 'react'
 import { fetchPosts } from '../../services/blog/postService'
 
 
-export const usePosts = (count = null) => {
+export const usePosts = (page = 1, limit = 5) => {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [featuredPost, setFeaturedPost] = useState(null)
+  const [totalPosts, setTotalPosts] = useState(0)
 
   useEffect(() => {
     const getPosts = async () => {
       setLoading(true)
       try {
-        const { data } = await fetchPosts()
-        
-        if (count) {
-          setPosts(data.slice(0, count))
-        } else {
-          setPosts(data)
-        }
-
-        if (data && data.length > 0) {
-          setFeaturedPost(data[0])
-        }
+        const validPage = page || 1
+        const { data, total } = await fetchPosts(validPage, limit)
+        setPosts(data)
+        setTotalPosts(total)
       } catch (error) {
         console.error('Error while fetching posts:', error.message)
         setError(error.message || 'Something went wrong while fetching posts.')
@@ -32,7 +25,7 @@ export const usePosts = (count = null) => {
     }
 
     getPosts()
-  }, [count])
+  }, [page, limit])
 
-  return { posts, featuredPost, loading, error }
+  return { posts, loading, error, totalPosts }
 }

@@ -6,13 +6,14 @@ import ErrorMessage from '../ErrorMessage/index'
 import { PostContainer, NoPostsMessage } from './styles'
 
 
-const PostList = ({ count = null }) => {
-  const { posts: visiblePosts = [], loading, error } = usePosts(count)
+const PostList = ({ count = 1 }) => {
+  const { posts, loading, error } = usePosts(count)
 
-  if (loading && visiblePosts.length === 0) return <Load />
+  if (loading && !posts.length) return <Load />
+
   if (error) return <ErrorMessage message={error} />
 
-  if (visiblePosts.length === 0) {
+  if (!posts.length) {
     return (
       <PostContainer centered>
         <NoPostsMessage>No posts found.</NoPostsMessage>
@@ -22,8 +23,8 @@ const PostList = ({ count = null }) => {
 
   return (
     <>
-      {visiblePosts.map((post, index) => (
-        <Post post={post} key={post.id || `post-${index}`} />
+      {posts.map((post) => (
+        <Post post={post} key={post.id} />
       ))}
     </>
   )
