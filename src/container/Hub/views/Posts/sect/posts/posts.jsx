@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useFetchPosts } from '../../../../../../hooks/useBlog/useFetchPosts'
+import { usePosts } from '../../../../../../hooks/useBlog/usePosts'
 
 import ErrorMessage from '../../../../../../components/ErrorMessage/index'
 import PostManageList from '../../../../../../components/PostManageList/index'
@@ -8,8 +8,9 @@ import Load from '../../../../../../components/Load/index'
 
 import { Section, Contain, PostsHeader } from './postsStyles'
 
+
 const Posts = () => {
-  const { posts, loading, error } = useFetchPosts()
+  const { posts, loading, error } = usePosts()
   const navigate = useNavigate()
   const [errorMessage, setErrorMessage] = useState(null)
 

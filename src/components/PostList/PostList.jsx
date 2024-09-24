@@ -1,4 +1,4 @@
-import { useFetchPosts } from '../../hooks/useBlog/useFetchPosts'
+import { usePosts } from '../../hooks/useBlog/usePosts'
 import Post from '../Post/index'
 import Load from '../Load/index'
 import ErrorMessage from '../ErrorMessage/index'
@@ -7,7 +7,7 @@ import { PostContainer, NoPostsMessage } from './styles'
 
 
 const PostList = ({ count = null }) => {
-  const { posts: visiblePosts = [], loading, error } = useFetchPosts(count)
+  const { posts: visiblePosts = [], loading, error } = usePosts(count)
 
   if (loading && visiblePosts.length === 0) return <Load />
   if (error) return <ErrorMessage message={error} />

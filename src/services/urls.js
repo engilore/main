@@ -37,6 +37,8 @@ export const postCreateUrl = `${postUrl}create/`
 export const postDetailUrl = (id) => `${postUrl}${id}/`
 export const postUpdateUrl = (id) => `${postUrl}${id}/edit/`
 export const postDeleteUrl = (id) => `${postUrl}${id}/delete/`
+
+export const featuredPostUrl = `${postUrl}featured/`
 export const toggleFeatureUrl = (id) => `${postUrl}${id}/toggle-feature/`
 
 export const userPostUrl = `${postUrl}user/`

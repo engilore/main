@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { toggleFeaturePost } from '../../services/blog/postService'
+import { toggleFeaturePost } from '../../services/blog/postFeaturedService'
 
 
 export const useToggleFeaturePost = () => {

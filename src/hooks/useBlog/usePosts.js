@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { fetchPosts } from '../../services/blog/postService'
 
 
-export const useFetchPosts = (count = null) => {
+export const usePosts = (count = null) => {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)

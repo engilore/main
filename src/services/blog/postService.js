@@ -1,6 +1,6 @@
 import { baseUrl } from '../api'
 import {
-    postUrl, postTypesUrl, toggleFeatureUrl, postCreateUrl, postDetailUrl, postUpdateUrl, postDeleteUrl, userPostUrl
+    postUrl, postTypesUrl, postCreateUrl, postDetailUrl, postUpdateUrl, postDeleteUrl, userPostUrl
 } from '../urls'
 
 
@@ -36,6 +36,7 @@ export const fetchPosts = async () => {
     throw error
   }
 }
+
 
 export const fetchUserPosts = async (token) => {
   const apiUrl = `${baseUrl}${userPostUrl}`
@@ -183,30 +184,6 @@ export const fetchPostTypes = async () => {
     return await response.json()
   } catch (error) {
     console.error('Error fetching post types:', error.message)
-    throw error
-  }
-}
-
-export const toggleFeaturePost = async (token, id) => {
-  const apiUrl = `${baseUrl}${toggleFeatureUrl(id)}`
-
-  try {
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Token ${token}`,
-        'Content-Type': 'application/json',
-      },
-    })
-
-    if (!response.ok) {
-      const errMessage = await response.text()
-      throw new Error(`Failed to toggle feature status: ${response.status} ${errMessage}`)
-    }
-
-    return await response.json()
-  } catch (error) {
-    console.error(`Error toggling feature status for post ${id}:`, error.message)
     throw error
   }
 }
