@@ -1,4 +1,4 @@
 import SpotlightPostSection from './spotlightPost/index'
-import FeaturedPostsSection from './featuredPosts/index'
+import PostsSection from './Posts/index'
 
-export { SpotlightPostSection, FeaturedPostsSection }
+export { SpotlightPostSection, PostsSection }

@@ -1,4 +1,4 @@
-import { SpotlightPostSection, FeaturedPostsSection } from './sect/index'
+import { SpotlightPostSection, PostsSection } from './sect/index'
 
 import { Layout, MainContent } from './styles'
 
@@ -10,7 +10,7 @@ const Base = () => {
       <SpotlightPostSection />
       <Layout>
         <MainContent>
-          <FeaturedPostsSection />
+          <PostsSection />
         </MainContent>
       </Layout>
     </>

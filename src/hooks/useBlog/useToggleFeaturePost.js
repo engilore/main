@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { toggleFeaturePost } from '../../services/blog/postService'
+import { toggleFeaturePost } from '../../services/blog/postFeaturedService'
 
 
 export const useToggleFeaturePost = () => {
@@ -10,13 +10,15 @@ export const useToggleFeaturePost = () => {
   const toggleFeature = async (postId) => {
     setLoading(true)
     setError(null)
+    setSuccess(null)
     const token = localStorage.getItem('authToken')
 
     try {
       const response = await toggleFeaturePost(token, postId)
       setSuccess(response.message)
+      return response
     } catch (err) {
-      setError(err.message)
+      setError(err.message || 'An error occurred')
     } finally {
       setLoading(false)
     }

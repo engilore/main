@@ -19,7 +19,7 @@ const FeaturedPosts = () => {
         <CoatOfArms src={badge} alt="Coat of Arms" />
       </ArmsWrapper>
       <Contain>
-        <PostList count={4} />
+        <PostList/>
       </Contain>
     </Section>
   )

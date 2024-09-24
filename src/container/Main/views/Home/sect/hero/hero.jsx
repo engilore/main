@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Button from '../../../../../../components/Button/index'
 
 import {
   Section,
@@ -9,10 +8,8 @@ import {
   Description,
   ImageContainer,
   Image,
-  MembershipContainer,
 } from './heroStyle'
 import clint from '../../../../../../assets/clint.png'
-import { FaFireFlameSimple } from 'react-icons/fa6'
 
 
 const Hero = () => {
@@ -27,6 +24,7 @@ const Hero = () => {
             Engilore is my arena, where I, Lalo Blanc, engage in the noble combat of ideas,
             challenging the staid and stirring the stagnant.
           </Description>
+          {/*
           <MembershipContainer>
             <Button
               text="Become a Auxiliary"
@@ -39,6 +37,7 @@ const Hero = () => {
               to="/auxiliership"
             />
           </MembershipContainer>
+          */}
         </Content>
         <ImageContainer>
           <Image

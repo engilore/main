@@ -1,4 +1,4 @@
-import { useFetchPosts } from '../../../../../../hooks/useBlog/useFetchPosts'
+import { useFeaturedPost } from '../../../../../../hooks/useBlog/useFeaturedPost'
 import Tag from '../../../../../../components/Tag/index'
 import Load from '../../../../../../components/Load/index'
 
@@ -18,12 +18,9 @@ import {
 
 
 const SpotlightPost = () => {
-  const { posts, loading, error } = useFetchPosts() 
+  const { featuredPost, loading } = useFeaturedPost()
 
   if (loading) return <Load />
-  if (error) return <p>{error}</p>
-
-  const featuredPost = posts.length > 0 ? posts[0] : null
 
   if (!featuredPost) return (
     <Section $centered>
@@ -54,10 +51,10 @@ const SpotlightPost = () => {
           <Intro>{featuredPost.summary}</Intro>
           <TagPills>
             {featuredPost.topics && featuredPost.topics.length > 0 && (
-              featuredPost.topics.map(tag => (
+              featuredPost.topics.map((topic, index) => (
                 <Tag
-                  key={tag}
-                  text={tag}
+                  key={topic.id || `${topic.name}-${index}`}
+                  text={topic.name}
                   textColor="var(--clr-white)"
                   bgColor="var(--bg-primary)"
                   outlined={false}

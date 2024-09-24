@@ -6,14 +6,6 @@ export const Section = styled.header`
   margin-bottom: 40px;
 `
 
-export const Contain = styled.header`
-  /* styles */
-`
-
-export const Header = styled.header`
-  /* styles */
-`
-
 export const Title = styled.h1`
   font-family: var(--fnt-secondary);
   font-size: var(--fs-2xl);
