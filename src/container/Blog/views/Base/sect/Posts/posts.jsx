@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
-import Post from '../../../../../../components/Post/index'
+import { useState } from 'react'
 import { usePosts } from '../../../../../../hooks/useBlog/usePosts'
+import Post from '../../../../../../components/Post/index'
+import Pagination from '../../../../../../components/Pagination/index'
+import Load from '../../../../../../components/Load/index'
+import ErrorMessage from '../../../../../../components/ErrorMessage/index'
+
 
 const Posts = () => {
   const [page, setPage] = useState(1)
@@ -20,8 +24,9 @@ const Posts = () => {
     }
   }
 
-  if (loading) return <div>Loading...</div>
-  if (error) return <div>{error}</div>
+  if (loading) return <Load />
+  
+  if (error) return <ErrorMessage message={error} />
 
   return (
     <div>
@@ -31,15 +36,12 @@ const Posts = () => {
         ))}
       </div>
 
-      <div className="pagination">
-        <button onClick={handlePreviousPage} disabled={page === 1}>
-          Previous
-        </button>
-        <span>Page {page} of {totalPages}</span>
-        <button onClick={handleNextPage} disabled={page === totalPages}>
-          Next
-        </button>
-      </div>
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        onNext={handleNextPage}
+        onPrevious={handlePreviousPage}
+      />
     </div>
   )
 }
