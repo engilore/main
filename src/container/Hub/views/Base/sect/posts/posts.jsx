@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import useUserPosts from '../../../../../../hooks/useBlog/useUserPosts'
 import PostManageList from '../../../../../../components/PostManageList/index'
 import Load from '../../../../../../components/Load/index'
+import ErrorMessage from '../../../../../../components/ErrorMessage/index'
 
 import { Section, Contain, PostsHeader } from './postsStyle'
 
@@ -18,14 +19,15 @@ const Posts = () => {
     }
   }
 
-  
   if (loading) return <Load />
-  if (error) return <p>{error}</p>
 
   return (
     <Section>
       <Contain>
         <PostsHeader>Your Posts</PostsHeader>
+
+        {error && <ErrorMessage message={error} />}
+
         <PostManageList 
           posts={draftPosts} 
           title="Drafts" 

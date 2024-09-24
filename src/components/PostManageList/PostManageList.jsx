@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import Button from '../Button/index'
 import { useToggleFeaturePost } from '../../hooks/useBlog/useToggleFeaturePost'
+import Button from '../Button/index'
 
 import {
   ListWrapper,
@@ -18,8 +18,9 @@ import {
   ButtonWrapper
 } from './styles'
 
+
 const PostManageList = ({ posts, title, isDraft, handleView, handleDelete, lastPostElementRef }) => {
-  const { toggleFeature } = useToggleFeaturePost()
+  const { toggleFeature, loading } = useToggleFeaturePost()
   const [localPosts, setLocalPosts] = useState(posts)
 
   useEffect(() => {
@@ -27,16 +28,20 @@ const PostManageList = ({ posts, title, isDraft, handleView, handleDelete, lastP
   }, [posts])
 
   const handleToggleFeature = async (postId) => {
-    await toggleFeature(postId)
-
     setLocalPosts((prevPosts) =>
       prevPosts.map((post) => {
         if (post.id === postId) {
-          return { ...post, is_featured: !post.is_featured }
+          return { ...post, is_featured: true }
         }
-        return post
+        return { ...post, is_featured: false }
       })
     )
+
+    try {
+      await toggleFeature(postId)
+    } catch (err) {
+      setLocalPosts(posts)
+    }
   }
 
   return (
@@ -95,6 +100,7 @@ const PostManageList = ({ posts, title, isDraft, handleView, handleDelete, lastP
                         textColor="white"
                         size="small"
                         allowedRoles={['admin']}
+                        disabled={loading}
                       />
                     </ButtonWrapper>
                   )}

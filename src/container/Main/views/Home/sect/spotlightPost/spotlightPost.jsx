@@ -18,10 +18,9 @@ import {
 
 
 const SpotlightPost = () => {
-  const { featuredPost, loading, error } = useFeaturedPost()
+  const { featuredPost, loading } = useFeaturedPost()
 
   if (loading) return <Load />
-  if (error) return <p>{error}</p>
 
   if (!featuredPost) return (
     <Section $centered>
